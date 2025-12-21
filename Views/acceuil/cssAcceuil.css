@@ -1,0 +1,264 @@
+*{
+    text-decoration: none;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+body{
+    background-color: #395b41;
+}
+
+.navbarAll {
+    /* position: fixed; */
+    height: 80px;
+    width: 100%;
+    align-items: center;
+    /* margin-top: -55px; */
+  
+}
+
+.logo {
+    margin-left: 40px;
+    color: darkblue;
+    font-size: 25px;
+
+}
+.navbarAll div {
+    display: flex;
+    background-color:#28a745;
+    height: 50px;
+    align-items: center;
+    text-align: center;
+
+}
+#mynavbar ul {
+    display: flex;
+    margin-left: 20px;
+
+}
+#mynavbar li{
+    list-style: none;
+    margin-left: 20px;
+   
+}
+.nav-link {
+    color: whitesmoke;
+    border: none;
+    background-color:#28a745;
+    
+}
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+#myChart2 {
+    width: 730px !important;
+    height: 500px !important;
+    color: blanchedalmond !important;
+    float: left !important;
+    margin-left: 20px;
+    border: white 2px solid;
+    border-radius: 10px !important;
+    overflow: hidden;
+}
+
+#myChart1 {
+    width: 750px !important;
+    height: 550px !important;
+    color: blanchedalmond !important;
+    margin-left: 800px !important; 
+    margin-top: 10px;
+    border: white 2px solid;
+    overflow: hidden;
+}
+
+#myChart3 {
+    width: 400px !important;
+    height: 300px !important;
+    color: blanchedalmond !important;
+    margin-left: 800px !important; 
+    margin-top: 10px;
+    border: white 2px solid;
+    overflow: hidden;
+}
+
+#myChart4 {
+    width: 340px !important;
+    height: 300px !important;
+    color: blanchedalmond !important;
+    margin-left: 1210px !important; 
+    margin-top: -298px;
+    border: white 2px solid;
+    overflow: hidden;
+}
+
+
+
+#nbFac {
+    width: 250px;
+    height: 150px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    background-color: white;
+    /* text-align: center; */
+    border-radius: 10px;
+    border: white 2px solid;
+    background: rgb(78, 78, 78);
+    color: white;
+    float: left;
+}
+
+#recetotal {
+    width: 250px;
+    height: 150px;
+    margin-left: 280px; 
+    margin-bottom: 10px;
+    background-color: white;
+    /* text-align: center; */
+    border-radius: 10px;
+    border: white 2px solid;
+    background: rgb(78, 78, 78);
+    color: white;
+    /* float : left; */
+}
+
+#totalReg {
+    width: 250px;
+    height: 150px;
+      margin-left: 799px; 
+    margin-bottom: 10px;
+    margin-top: -160px;
+    background-color: white;
+    border: white 2px solid;
+    background: rgb(78, 78, 78);
+    color: white;
+    border-radius: 10px;
+    /* float : left; */
+}
+
+#reste {
+    width: 250px;
+    height: 150px;
+    margin-left: 540px; 
+    margin-bottom: 10px;
+    margin-top: -160px;
+    border: white 2px solid;
+    background-color: white;
+    background: rgb(78, 78, 78);
+    color: white;
+    border-radius: 10px;
+}
+
+#proVendu {
+    width: 250px;
+    height: 150px;
+    margin-left: 1058px; 
+    margin-bottom: 10px;
+    margin-top: -160px;
+    background-color: white;
+    background: rgb(78, 78, 78);
+    color: white;
+    border-radius: 10px;
+    border: white 2px solid;
+}
+
+#stock {
+    width: 250px;
+    height: 150px;
+    margin-left: 1320px; 
+    margin-bottom: 10px;
+    margin-top: -160px;
+    background-color: white;
+    background: rgb(78, 78, 78);
+    color: white;
+    border-radius: 10px;
+    border: white 2px solid;
+}
+
+    #clients-non-regles-section {
+            font-family: Arial, sans-serif;
+            margin-top: 20px;
+        }
+
+        /* Bouton d’ouverture */
+        .open-modal-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+            margin-left: 140px;
+        }
+        .open-modal-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Fond du modal */
+        .modal {
+            display: none; /* caché par défaut */
+            position: fixed;
+            z-index: 10;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        /* Contenu du modal */
+        .modal-content {
+            background-color: #fff;
+            margin: 8% auto;
+            padding: 20px;
+            border-radius: 12px;
+            width: 80%;
+            max-width: 900px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Bouton fermer */
+        .close {
+            float: right;
+            font-size: 22px;
+            font-weight: bold;
+            color: #333;
+            cursor: pointer;
+        }
+        .close:hover {
+            color: red;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
