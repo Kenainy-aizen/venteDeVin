@@ -156,7 +156,7 @@ require_once __DIR__ . '/../config/db.php';
             $date2 = $_POST['date2'];
             $achat = $this->model->nonRegleEntreDeuxDate($date1,$date2);
 
-            include __DIR__ . '/../Views1/achat/read.php';
+            include __DIR__ . '/../Views/achat/read.php';
         }
 
        public function ajaxProduits() {
@@ -169,7 +169,7 @@ require_once __DIR__ . '/../config/db.php';
             
         }
 
-
+        
          
 
     }

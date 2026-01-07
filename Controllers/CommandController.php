@@ -97,7 +97,7 @@
                 }
             } 
              else {
-                include __DIR__ . '/../Views1/command/create.php';
+                include __DIR__ . '/../Views/command/create1.php';
             }
         
             

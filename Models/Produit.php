@@ -135,5 +135,14 @@
             $stmt->execute();
             return $stmt->fetchALL(PDO::FETCH_ASSOC);
         }
+
+          public function rechercher($nomProduit) {
+            $query = "SELECT * FROM PRODUIT WHERE nomClient LIKE :nomClient ";
+            $stmt = $this->conn->prepare($query);
+            $keyword = "%$nomProduit%";
+            $stmt->bindParam(':nomClient',$keyword);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
     }
 ?>

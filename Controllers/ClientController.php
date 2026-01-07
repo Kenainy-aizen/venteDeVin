@@ -72,5 +72,7 @@ class ClientController {
             header('Location: index.php?entity=client');
         }
     }
-}
+
+     
+}   
 ?>

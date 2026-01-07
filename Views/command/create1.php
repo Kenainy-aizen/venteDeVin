@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>COMMANDE</title>
     <link rel="stylesheet" href="/lib/sweetalert2/sweetalert2.min.css">
-    <link rel="stylesheet" href="/Views1/acceuil/cssAcceuil1.css">
+    <link rel="stylesheet" href="/Views/acceuil/cssAcceuil1.css">
       <script src="/lib/sweetalert2/sweetalert2.all.min.js"></script>
    
 
