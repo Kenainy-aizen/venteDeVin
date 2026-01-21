@@ -4,6 +4,7 @@
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     
+    
     session_start();
     require_once 'Controllers/AccueilController.php';
     require_once 'Controllers/ProduitController.php';
@@ -117,6 +118,10 @@
 
         case 'ajaxProduits':
             $controller->ajaxProduits();
+            break;
+        
+        case 'rechercher':
+            $controller->rechercher();
             break;
        
         default: 

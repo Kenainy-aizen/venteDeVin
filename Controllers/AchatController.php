@@ -12,8 +12,10 @@ require_once __DIR__ . '/../config/db.php';
         }
 
         public function index() {
+
             $achat = $this->model->read();
             include __DIR__ . '/../Views/achat/read.php';
+            
         }
 
 
@@ -46,7 +48,7 @@ require_once __DIR__ . '/../config/db.php';
 
                             $existe = $this->model->verification($trueAchat);
                            // echo $existe;
-                            $num_client = $this->model->chercherNumParNomClient($_POST['nomClient']);
+                            $num_client = $this->model->chercherNumParNomClient(trim($_POST['nomClient']));
                             if(count($existe) == 0){
                                 $this->model->createFacture($trueAchat,$_POST['dateAchat'],$num_client[0]['num_client']);
                             }
@@ -142,10 +144,11 @@ require_once __DIR__ . '/../config/db.php';
         public function rechercher() {
 
             if($_SERVER['REQUEST_METHOD'] === 'POST') {
-               $nomClient = $_POST['inputRecherche'];
-                $achat = $this->model->rechercher($nomClient);
+
+                $num_facture = $_POST['inputRecherche'];
+                $achat = $this->model->rechercher($num_facture);
                 include __DIR__ . '/../Views/achat/read.php';
-            
+
             }
 
         }
@@ -167,10 +170,7 @@ require_once __DIR__ . '/../config/db.php';
             header('Content-Type: application/json');
             echo json_encode($produits);
             
-        }
-
-        
-         
+        } 
 
     }
 

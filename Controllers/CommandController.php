@@ -70,13 +70,14 @@
                         $quantite = $_POST['quantite'];
 
                         $nomClient = $_POST['nom_client'];
-                        $numClient = $this->model->nomClientTonumClient($nomClient);
+                        $numClient = $this->model->nomClientTonumClient(trim($nomClient));
+                        echo $numClient;
 
                         $design = $_POST['design'];
-                        $num_produit = $this->model->designTonumProduit($design);
-                        echo $num_produit[0]['num_produit'];
+                        $num_produit = $this->model->designTonumProduit(trim($design));
+                        // echo $num_produit[0]['num_produit'];
                         $date = $_POST['date_cmd'];
-                        echo $design;
+                        // echo $design;
 
                         $status = "En attente";
 
@@ -106,6 +107,13 @@
         public function CreatePdf($num_reg) {
             $this->model->genererPdf($num_reg);
 
+        }
+
+        public function rechercher() {
+            $nom_client = $_POST['inputRecherche'];
+            $command = $this->model->rechercher($nom_client);
+            include __DIR__ . '/../Views/command/read.php';
+            
         }
 
     }

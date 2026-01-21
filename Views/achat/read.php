@@ -9,25 +9,27 @@
     <nav class="navbarAll">
         <div>
           <a class="logo">VENTE</a>      
-          <div class="" id="mynavbar">          
-          <li class="nav-item">
-                  <a href="index.php?entity=acceuil&action=read"><button class="nav-link">Dashbord</button></a>
+          <div class="" id="mynavbar">  
+            <ul>      
+                <li class="nav-item">
+                  <a href="index.php?entity=acceuil&action=read"><button class="nav-link" style="width:100px">Tableau de bord</button></a>
                 </li>
                 <li class="nav-item">
-                  <a href="index.php?entity=produit&action=read"><button class="nav-link" >Produit</button></a>
+                  <a href="index.php?entity=produit&action=read"><button class="nav-link" >Produits</button></a>
                 </li>
+                <li class="nav-item">
+                  <a href="index.php?entity=client&action=read"><button class="nav-link">Clients</button></a>
+                </li>  
+                <li class="nav-item">
+                   <a href="index.php?entity=command&action=read"><button class="nav-link">Commandes</button></a>
+                </li> 
                 <li class="nav-item">
                   <a href="index.php?entity=achat&action=read"><button class="nav-link">Achats</button></a>
                 </li>
                 <li class="nav-item">
-                   <a href="index.php?entity=client&action=read"><button class="nav-link">Clients</button></a>
-                </li>
-                 <li class="nav-item">
-                   <a href="index.php?entity=reglement&action=read"><button class="nav-link">Reglements</button></a>
-                </li>
-                  <li class="nav-item">
-                   <a href="index.php?entity=command&action=read"><button class="nav-link">Commandes</button></a>
-                </li>
+                  <a href="index.php?entity=reglement&action=read"><button class="nav-link">Règlements</button></a>
+                </li>  
+              </ul>  
             <form class="d-flex" action="index.php?entity=achat&action=rechercher" method="POST" >
               <input id="inputRecherche" name="inputRecherche" type="text" placeholder="Taper ici pour rechercher">
               <button class="btnRecherche" type="submit" >Rechercher</button>
@@ -40,7 +42,7 @@
 <body>
     
 <div class="titre">
-        <h1>Liste des achat</h1>
+        <h1>Liste des achats</h1>
     </div>
     <div  style="margin-top: 55px;"><br>
         <div class="teste">
@@ -70,7 +72,7 @@
             
             <thead  style="position: fixed;">
                 <tr class="trMedocTble">
-                    <th style="width: 200px;">Numero de facture</th>
+                    <th style="width: 200px;">Numéro de facture</th>
                     <th style="width: 200px;">Nom de client</th>
                     <th style="width: 200px;">Date de facture</th>
                     <th style="width: 200px;">Montant</th>
@@ -86,11 +88,11 @@
                   <td> <?= $achat['num_facture'] ?></td>
                   <td> <?= $achat['nom_client'] ?></td>
                   <td> <?= $achat['date_facture'] ?></td>
-                  <td> <?= $achat['montant_total'] ?></td>
+                  <td> <?= $achat['montant_total'] ?> ar</td>
                   <td style="display: flex;justify-content: flex-start; align-items: center;  gap: 10px;  margin-left: 15px">
 
                       <form id="formAchat" method="post" action="index.php?entity=achat&action=CreatePdf&id=<?= $achat['num_facture'] ?>"> 
-                        <button type="submit" name="genererPdf" style="background-color: rgb(193, 215, 251); border: 2px solid darkblue;" id="Edit"> Editer en pdf</button> 
+                        <button type="submit" name="genererPdf" style="background-color: rgb(193, 215, 251); border: 2px solid darkblue;" id="Edit"> Generer en pdf</button> 
                       </form>
                         <button style="background-color: rgb(255, 189, 189); border: 2px solid rgb(158, 3, 3);" class="btnSupprimer" data-id="<?= $achat['num_facture'] ?>">Supprimer</button>
                                          

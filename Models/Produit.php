@@ -45,11 +45,45 @@
         }
 
         public function delete($num_produit) {
-            $query = "DELETE FROM PRODUIT WHERE num_produit = :num_produit";
-            $stmt = $this->conn->prepare($query);
-            $stmt->bindParam(':num_produit',$num_produit);
-            return $stmt->execute();
+            try {
+                // 🔐 Démarrer la transaction
+                $this->conn->beginTransaction();
+
+                // 1️⃣ Supprimer le produit
+                $queryProduit = "DELETE FROM PRODUIT WHERE num_produit = :num_produit";
+                $stmtProduit = $this->conn->prepare($queryProduit);
+                $stmtProduit->bindParam(':num_produit', $num_produit);
+                $stmtProduit->execute();
+
+                // 2️⃣ Supprimer les COMMANDES sans lignes
+                $queryCommande = "
+                    DELETE FROM COMMANDE
+                    WHERE num_bon_commande NOT IN (
+                        SELECT DISTINCT num_commande FROM LIGNE_COMMANDE
+                    )
+                ";
+                $this->conn->exec($queryCommande);
+
+                // 3️⃣ Supprimer les FACTURES sans lignes
+                $queryFacture = "
+                    DELETE FROM FACTURE
+                    WHERE num_facture NOT IN (
+                        SELECT DISTINCT num_facture FROM LIGNE_FACTURE
+                    )
+                ";
+                $this->conn->exec($queryFacture);
+
+                // ✅ Tout est OK
+                $this->conn->commit();
+                return true;
+
+            } catch (PDOException $e) {
+                // ❌ Erreur → rollback
+                $this->conn->rollBack();
+                throw $e; // laisse le contrôleur gérer l'erreur
+            }
         }
+
 
         public function readOne($numMedoc) {
             $query = "SELECT * FROM medicament WHERE numMedoc = :numMedoc";
@@ -136,13 +170,14 @@
             return $stmt->fetchALL(PDO::FETCH_ASSOC);
         }
 
-          public function rechercher($nomProduit) {
-            $query = "SELECT * FROM PRODUIT WHERE nomClient LIKE :nomClient ";
+        public function rechercher($nomProduit) {
+            $query = "SELECT * FROM PRODUIT WHERE design LIKE :design ";
             $stmt = $this->conn->prepare($query);
             $keyword = "%$nomProduit%";
-            $stmt->bindParam(':nomClient',$keyword);
+            $stmt->bindParam(':design',$keyword);
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
+
     }
 ?>

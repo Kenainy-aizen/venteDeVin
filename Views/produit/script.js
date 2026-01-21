@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         });
                     } else {
                         // Afficher un message d'erreur
+                        console.error('Erreur delete():', data.error);
                         Swal.fire(
                             'Erreur',
                             'Une erreur est survenue lors de la suppression.',

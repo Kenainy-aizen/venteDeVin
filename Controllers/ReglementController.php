@@ -91,6 +91,12 @@
                 $this->model->genererPdf($selected) ;
             }
         }
+
+        public function rechercher() {
+            $nom_client = $_POST['inputRecherche'];
+            $reglement = $this->model->rechercher($nom_client);
+            include __DIR__ . '/../Views/reglement/read.php';
+        }
     }
 
 ?>

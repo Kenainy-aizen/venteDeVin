@@ -62,7 +62,7 @@
         public function deleteLCMD($num_bon_commande){
             $query = "DELETE FROM LIGNE_COMMANDE WHERE num_commande = :num_bon_commande";
             $stmt = $this->conn->prepare($query);
-            $stmt->bindParam('num_bon_commande',$num_bon_commande);
+            $stmt->bindParam(':num_bon_commande',$num_bon_commande);
 
             return $stmt->execute();
         }
@@ -180,11 +180,11 @@
 
             }
         
-            // $facture .= "<tr>
-            //                 <td colspan='3'><strong>Total Général</strong></td>
-            //                 <td><strong>{$totalGeneral} Ar</strong></td>
-            //              </tr>";
-            // $facture .= "</table>";
+            $facture .= "<tr>
+                            <td colspan='3'><strong>Total Général</strong></td>
+                            <td><strong>{$totalGeneral} Ar</strong></td>
+                         </tr>";
+            $facture .= "</table>";
             
             return $facture;
         }
@@ -455,6 +455,14 @@
              return $texte . ' Ariary';
         }
 
+        public function rechercher($nom_client) {
+            $query = "SELECT C.nom_client, O.num_bon_commande, O.date_commande, O.statut FROM COMMANDE O JOIN CLIENT C ON O.num_client = C.num_client WHERE C.nom_client LIKE :nom_client";
+            $stmt = $this->conn->prepare($query);
+            $keyword = "%$nom_client%";
+            $stmt->bindParam(':nom_client',$keyword);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
 
     }
 

@@ -338,7 +338,30 @@
              return $texte . ' Ariary';
         }
 
+        public function rechercher($nom_client) {
+                $query="SELECT 
+                F.num_facture,
+                R.num_reglement,
+                R.date_reglement,
+                R.montant_reglement,
+                R.mode_paiement,
+                R.nom_personne_reglement,
+                F.montant_total,
+                (F.montant_total - COALESCE(SUM(R2.montant_reglement), 0)) AS reste_a_payer
+                FROM REGLEMENT R
+                JOIN FACTURE F ON F.num_facture = R.num_facture
+                JOIN REGLEMENT R2 ON R2.num_facture = F.num_facture
+                WHERE R.nom_personne_reglement LIKE :nom_client
+                GROUP BY F.num_facture, R.num_reglement, F.montant_total, R.montant_reglement
+                ORDER BY F.num_facture ASC, R.num_reglement ASC";
 
+                $stmt = $this->conn->prepare($query);
+                $keyword = "%$nom_client%";
+                $stmt->bindParam(':nom_client',$keyword);
+                $stmt->execute();
+
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
 
     }
 

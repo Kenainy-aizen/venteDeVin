@@ -23,30 +23,30 @@
           
           <div class="" id="mynavbar">
             <ul>
-              <li class="nav-item">
-                <a href="index.php?entity=acceuil&action=read"><button class="nav-link">Dashbord</button></a>
-              </li>
-              <li class="nav-item">
-                <a href="index.php?entity=produit&action=read"><button class="nav-link" >Produit</button></a>
-              </li>
-              <li class="nav-item">
-                <a href="index.php?entity=achat&action=read"><button class="nav-link">Achats</button></a>
-              </li>
-              <li class="nav-item">
-                <a href="index.php?entity=client&action=read"><button class="nav-link">Client</button></a>
-              </li>
-              <li class="nav-item">
-                <a href="index.php?entity=client&action=read"><button class="nav-link">Reglement</button></a>
-              </li> 
                 <li class="nav-item">
-                   <a href="index.php?entity=command&action=read"><button class="nav-link">Commande</button></a>
-                </li>           
+                  <a href="index.php?entity=acceuil&action=read"><button class="nav-link" style="width:100px">Tableau de bord</button></a>
+                </li>
+                <li class="nav-item">
+                  <a href="index.php?entity=produit&action=read"><button class="nav-link" >Produits</button></a>
+                </li>
+                <li class="nav-item">
+                  <a href="index.php?entity=client&action=read"><button class="nav-link">Clients</button></a>
+                </li>  
+                <li class="nav-item">
+                   <a href="index.php?entity=command&action=read"><button class="nav-link">Commandes</button></a>
+                </li> 
+                <li class="nav-item">
+                  <a href="index.php?entity=achat&action=read"><button class="nav-link">Achats</button></a>
+                </li>
+                <li class="nav-item">
+                  <a href="index.php?entity=reglement&action=read"><button class="nav-link">Règlements</button></a>
+                </li>          
             </ul>
-            <!-- <form class="d-flex" action="">
-              <input id="inputRecherche" type="text" placeholder="Taper ici pour rechercher">
+            <form class="d-flex" action="index.php?entity=reglement&action=rechercher" method="POST">
+              <input id="inputRecherche" name="inputRecherche" type="text" placeholder="Taper ici pour rechercher">
               <button class="btnRecherche">Rechercher</button>
-            </form> -->
-            <!-- <a href=""><button class="notif">N</button></a> -->
+            </form> 
+            <a href=""><button class="notif">N</button></a> 
             
           </div>
         </div>
@@ -54,7 +54,7 @@
 </head>
 <body>
 <div class="titre">
-        <h1>Liste des reglement</h1>
+        <h1>Liste des règlements</h1>
     </div>
     <div  style="margin-top: 55px;"><br><br><br>
         <form action="index.php?entity=reglement&action=CreatePdf" method='post'>
@@ -74,14 +74,14 @@
 
             <thead style="position: fixed;">
                 <tr class="trMedocTble">
-                    <th style="width: 170px;">Numero de reglement</th>
-                    <th style="width: 200px;">Numero facture</th>
-                    <th style="width: 200px;">Nom client</th>
+                    <th style="width: 170px;">Numéro de règlement</th>
+                    <th style="width: 200px;">Numéro de facture</th>
+                    <th style="width: 200px;">Nom du client</th>
                     <th style="width: 90px;">Date</th>
                     <th style="width: 200px;">Mode de paiement</th>
-                    <th style="width: 200px;">Montant de reglement</th>
+                    <th style="width: 200px;">Montant de règlement</th>
                     <th style="width: 150px;">Montant total</th>
-                    <th style="width: 120px;">reste a payer</th>
+                    <th style="width: 120px;">Reste à payer</th>
                     <th style="width: 250px; background-color:rgb(33, 33, 33);color: white;">Action</th>
                 </tr>
             </thead>
@@ -113,14 +113,14 @@
 
                         <td> <?= $ligne['mode_paiement']?></td>
 
-                        <td> <?= $ligne['montant_reglement'] ?> </td>
+                        <td> <?= $ligne['montant_reglement'] ?> ar</td>
 
                         <?php if( $i === 0 ): ?>
-                            <td rowspan ="<?= $rowspan ?>"> <?= $montant_total ?></td>
+                            <td rowspan ="<?= $rowspan ?>"> <?= $montant_total ?> ar</td>
                         <?php endif; ?>
                             
                         <?php if( $i === 0 ): ?> 
-                            <td rowspan="<?= $rowspan ?>"><?= $reste ?></td>                         
+                            <td rowspan="<?= $rowspan ?>"><?= $reste ?> ar</td>                         
                         <?php endif; ?>
                     
                         <td>
@@ -149,11 +149,11 @@
                 <form id="reglement-form" method="POST">
                     <label for="date">Date :</label>
                     <input type="date" id="date" name="date" value="<?= date('Y-m-d') ?>">
-                    <label for="nom">Nom client :</label>
+                    <label for="nom">Nom du client :</label>
                     <input type="text" id="nom" name="nom">
-                    <label for="num_facture">Numero facture :</label>
+                    <label for="num_facture">Numéro de facture :</label>
                     <input type="text" name="num_facture" id="num_facture" required>
-                    <label for="mode_paye">Type de paiement :</label>
+                    <label for="mode_paye">Mode de paiement :</label>
                     <select name="mode_paye" id="mode_paye">
                         <option value="Espece">Espece</option>
                         <option value="Cheque">Cheque</option>
@@ -169,15 +169,15 @@
     <div id="modal1" class="modal1">
             <div class="modal-content1">
                 <span class="close" onclick="closeModal1()">&times;</span>
-                <h2>Modification de reglement</h2>
+                <h2>Modification d'un règlement</h2>
                 <form id="modif-form" action="index.php?entity=reglement&action=update" method="POST">
                     <label for="date1">Date :</label>
                     <input type="date" id="date1" name="date_reglement" >
-                    <label for="nom1">Nom client :</label>
+                    <label for="nom1">Nom du client :</label>
                     <input type="text" id="nom1" name="nom_client">
-                    <label for="num_facture1">Numero facture :</label>
+                    <label for="num_facture1">Numéro de facture :</label>
                     <input type="text" name="num_facture" id="num_facture1">
-                    <label for="mode_paye1">Type de paiement :</label>
+                    <label for="mode_paye1">Mode de paiement :</label>
                     <select name="mode_paiement" id="mode_paye1">
                         <option value="Espece">Espece</option>
                         <option value="Cheque">Cheque</option>

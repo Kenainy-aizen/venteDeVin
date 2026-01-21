@@ -206,21 +206,21 @@
             $pdf->SetX(10);
             $pdf->Cell(90, 4, txt('Mail       : lazan_i_betsileo2@yahoo.fr'), 0, 0, 'L');
 
-            $pdf->SetX(110);
-            $pdf->Cell(90, 4, txt('BL/FACTURE N° ' . $numAchat), 0, 1, 'R');
+            $pdf->SetX(150);
+            $pdf->Cell(90, 4, txt('BL/FACTURE N° ' . $numAchat), 0, 1, 'L');
             
-            $pdf->SetX(110);
-            $pdf->Cell(90, 4, txt('Doit : ' . $factureInfo['nom_client'].'                  '), 0, 1, 'R');
+            $pdf->SetX(150);
+            $pdf->Cell(90, 4, txt('Doit : ' . $factureInfo['nom_client'].'                  '), 0, 1, 'L');
             
         
-            $pdf->SetX(110);
-            $pdf->Cell(90, 4, txt($factureInfo['adresse_client'].'                         '), 0, 1, 'R');
+            $pdf->SetX(150);
+            $pdf->Cell(90, 4, txt($factureInfo['adresse_client'].'                         '), 0, 1, 'L');
             
-            $pdf->SetX(110);
-            $pdf->Cell(82.5, 4, txt($factureInfo['email_client']), 0, 1, 'R');
+            $pdf->SetX(150);
+            $pdf->Cell(82.5, 4, txt($factureInfo['email_client']), 0, 1, 'L');
             
-            $pdf->SetX(110);
-            $pdf->Cell(68, 4, txt('NIF: ' . $factureInfo['num_client']), 0, 1, 'R');
+            $pdf->SetX(150);
+            $pdf->Cell(68, 4, txt('NIF: ' . $factureInfo['num_client']), 0, 1, 'L');
             
         
             $pdf->Ln(4);
@@ -353,11 +353,13 @@
         }
 
         
-        public function rechercher($nomClient) {
-            $query = "SELECT * FROM achat WHERE nomClient LIKE :nomClient ORDER BY numAchat ASC";
+        public function rechercher($numFacture) {
+            $query = "SELECT F.num_facture, C.nom_client, F.date_facture, F.montant_total FROM FACTURE F JOIN CLIENT C ON F.num_client = C.num_client WHERE F.num_facture LIKE :num_facture ORDER BY F.date_facture DESC ";
+         
+            // $query = "SELECT * FROM FACTURE WHERE num_facture LIKE :num_facture";
             $stmt = $this->conn->prepare($query);
-            $keyword = "%$nomClient%";
-            $stmt->bindParam(':nomClient',$keyword);
+            $keyword = "%$numFacture%";
+            $stmt->bindParam(':num_facture',$keyword);
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
@@ -547,6 +549,8 @@
             $stmt->execute(['search' => "%$search%"]);
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
+
+       
 
     }
 

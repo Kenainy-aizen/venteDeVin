@@ -73,6 +73,10 @@ class ClientController {
         }
     }
 
-     
+    public function rechercher() {
+        $nom_client = $_POST['nom_client'];
+        $client = $this->model->rechercher($nom_client);
+        include __DIR__ . '/../Views/client/read.php';
+    } 
 }   
 ?>

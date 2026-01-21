@@ -65,11 +65,15 @@
             return $stmt->execute();
         }
         
-
+        public function rechercher($nom_client) {
+            $query = "SELECT * FROM CLIENT WHERE nom_client LIKE :nom_client";
+            $keyword = "%$nom_client%";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':nom_client',$keyword);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
         
-
     }
-
-
 
 ?>

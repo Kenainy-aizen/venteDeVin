@@ -21,23 +21,23 @@
           <div class="" id="mynavbar">
             <ul>
             <li class="nav-item">
-                  <a href="index.php?entity=acceuil&action=read"><button class="nav-link">Dashbord</button></a>
+                  <a href="index.php?entity=acceuil&action=read"><button class="nav-link" style="width:100px">Tableau de bord</button></a>
                 </li>
                 <li class="nav-item">
                   <a href="index.php?entity=produit&action=read"><button class="nav-link" >Produits</button></a>
                 </li>
                 <li class="nav-item">
+                  <a href="index.php?entity=client&action=read"><button class="nav-link">Clients</button></a>
+                </li>  
+                <li class="nav-item">
+                   <a href="index.php?entity=command&action=read"><button class="nav-link">Commandes</button></a>
+                </li> 
+                <li class="nav-item">
                   <a href="index.php?entity=achat&action=read"><button class="nav-link">Achats</button></a>
                 </li>
                 <li class="nav-item">
-                   <a href="index.php?entity=client&action=read"><button class="nav-link">Clients</button></a>
-                 <li class="nav-item">
-                   <a href="index.php?entity=reglement&action=read"><button class="nav-link">Reglements</button></a>
-                </li>
-                 <li class="nav-item">
-                   <a href="index.php?entity=command&action=read"><button class="nav-link">Commandes</button></a>
-                </li>
-          </li>
+                  <a href="index.php?entity=reglement&action=read"><button class="nav-link">Règlements</button></a>
+                </li>  
               
             </ul>
             <!-- <form class="d-flex" action="">

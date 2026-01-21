@@ -13,25 +13,26 @@
           <div class="" id="mynavbar">
             <ul>
                 <li class="nav-item">
-                  <a href="index.php?entity=acceuil&action=read"><button class="nav-link">Dashbord</button></a>
+                  <a href="index.php?entity=acceuil&action=read"><button class="nav-link" style="width:100px">Tableau de bord</button></a>
                 </li>
                 <li class="nav-item">
-                  <a href="index.php?entity=produit&action=read"><button class="nav-link" >Produit</button></a>
-                </li>
-                <li class="nav-item">
-                  <a href="index.php?entity=achat&action=read"><button class="nav-link">Achats</button></a>
+                  <a href="index.php?entity=produit&action=read"><button class="nav-link" >Produits</button></a>
                 </li>
                 <li class="nav-item">
                   <a href="index.php?entity=client&action=read"><button class="nav-link">Clients</button></a>
                 </li>  
                 <li class="nav-item">
-                  <a href="index.php?entity=reglement&action=read"><button class="nav-link">Reglement</button></a>
-                </li>  
-                 <li class="nav-item">
-                   <a href="index.php?entity=command&action=read"><button class="nav-link">Commande</button></a>
+                   <a href="index.php?entity=command&action=read"><button class="nav-link">Commandes</button></a>
                 </li> 
+                <li class="nav-item">
+                  <a href="index.php?entity=achat&action=read"><button class="nav-link">Achats</button></a>
+                </li>
+                <li class="nav-item">
+                  <a href="index.php?entity=reglement&action=read"><button class="nav-link">Règlements</button></a>
+                </li>  
+              
               </ul>
-            <form class="d-flex" action="index.php?entity=medicament&action=rechercher" method="POST">
+            <form class="d-flex" action="index.php?entity=produit&action=rechercher" method="POST">
               <input id="inputRecherche" name="design" type="text" placeholder="Taper ici pour rechercher">
               <button class="btnRecherche" type="submit">Rechercher</button>
             </form>
@@ -45,7 +46,7 @@
     
     
     <div class="titre">
-        <h1>Liste des produit </h1>
+        <h1>Liste des produits</h1>
     </div>
     <div  style="margin-top: 55px;"><br><br><br>     
             
@@ -61,10 +62,10 @@
                 <thead style="position: fixed; ">
                        
                     <tr class="trMedocTble">
-                        <th style="width: 170px;">Numero de produit</th>
+                        <th style="width: 170px;">Numéro de produit</th>
                         <th style="width: 250px;">Designation</th>
                         <th style="width: 170px;">Nombre de stock</th>
-                        <th style="width: 170px;">Prix detaillant</th>
+                        <th style="width: 170px;">Prix détaillant</th>
                         <th style="width: 170px;">Prix de gros</th>
                         <th style="width: 170px;">Prix consommateur</th>
                         <th style="width: 210px; background-color:rgb(33, 33, 33);color: white;">Action</th>
@@ -76,13 +77,13 @@
                 <?php foreach ($produit as $produit) : ?>
                 <tr>
                     <td style="width: 170px;"> <?= $produit['num_produit'] ?></td>
-                    <td style="width: 250px;text-align: left;"> <?= $produit['design'] ?></td>
-                    <td style="width: 170px;"> <?= $produit['nombre'] ?></td>
-                    <td style="width: 170px;"> <?= $produit['prix_detaillant'] ?></td>
-                    <td style="width: 170px;"> <?= $produit['prix_consommateur'] ?></td>
-                    <td style="width: 170px;"> <?= $produit['prix_gros'] ?></td>
+                    <td style="width: 250px;text-align: left;"> <?= $produit['design'] ?> </td>
+                    <td style="width: 170px;"> <?= $produit['nombre'] ?> bouteille</td>
+                    <td style="width: 170px;"> <?= $produit['prix_detaillant'] ?> ar</td>
+                    <td style="width: 170px;"> <?= $produit['prix_consommateur'] ?> ar</td>
+                    <td style="width: 170px;"> <?= $produit['prix_gros'] ?> ar</td>
                     <td>
-                        <button onclick="openModal1('<?= $produit['num_produit'] ?>', '<?= $produit['design'] ?>', '<?= $produit['prix_detaillant'] ?>', '<?= $produit['prix_consommateur']?>','<?= $produit['prix_gros']?>','<?= $produit['nombre'] ?>')" style="background-color: rgb(193, 215, 251); border: 2px solid darkblue;" id="Edit">Editer</button>
+                        <button onclick="openModal1('<?= $produit['num_produit'] ?>', '<?= $produit['design'] ?>', '<?= $produit['prix_detaillant'] ?>', '<?= $produit['prix_consommateur']?>','<?= $produit['prix_gros']?>','<?= $produit['nombre'] ?>')" style="background-color: rgb(193, 215, 251); border: 2px solid darkblue;" id="Edit">Éditer</button>
                         <!-- <a href="index.php?entity=medicament&action=delete&id="><button style="background-color: rgb(255, 189, 189); border: 2px solid rgb(158, 3, 3);" id="Delete">Supprimer</button></a> -->
                         <!-- <button style="background-color: rgb(255, 189, 189); border: 2px solid rgb(158, 3, 3);" class="delete-btn" id="Delete" data-id="">Supprimer</button> -->
                         <button style="background-color: rgb(255, 189, 189); border: 2px solid rgb(158, 3, 3);" class="btnSupprimer" data-id="<?= $produit['num_produit'] ?>">Supprimer</button>
@@ -110,7 +111,7 @@
                     <label for="prix_consommateur">Prix consommateur :</label>
                     <input type="number" name="prix_consommateur" id="prix_consommateur" required> 
 
-                    <label for="prix_detaillant">Prix detaillant :</label>
+                    <label for="prix_detaillant">Prix détaillant :</label>
                     <input type="number" name="prix_detaillant" id="prix_detaillant" required> 
 
                     <label for="prix_consommateur">Prix de gros :</label>
@@ -127,11 +128,11 @@
     <div id="modal1" class="modal1">
             <div class="modal-content1">
                 <span class="close" onclick="closeModal1()">&times;</span>
-                <h2>Modification un produit</h2>
+                <h2>Modification d'un produit</h2>
                 <form id="medicament-form1" method="POST">
                     <label for="design1">Désignation :</label>
                     <input type="text" name="design1" id="design1" value="" >
-                    <label for="prix_detaillant1">Prix detaillant :</label>
+                    <label for="prix_detaillant1">Prix détaillant :</label>
                     <input type="number" name="prix_detaillant1" id="prix_detaillant1" value="" >
                     <label for="prix_gros1">Prix de gros</label>
                     <input type="number" name="prix_gros1" id="prix_gros1" value="" >

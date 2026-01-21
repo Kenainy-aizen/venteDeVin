@@ -13,30 +13,29 @@
           <div class="" id="mynavbar">
             <ul>
               <li class="nav-item">
-                <a href="index.php?entity=acceuil&action=read"><button class="nav-link">Dashbord</button></a>
-              </li>
-              <li class="nav-item">
-                <a href="index.php?entity=produit&action=read"><button class="nav-link" >Produit</button></a>
-              </li>
-              <li class="nav-item">
-                <a href="index.php?entity=achat&action=read"><button class="nav-link">Achats</button></a>
-              </li>
-              <li class="nav-item">
-                <a href="index.php?entity=client&action=read"><button class="nav-link">Client</button></a>
-              </li>
-              <li class="nav-item">
-                <a href="index.php?entity=reglement&action=read"><button class="nav-link">Reglement</button></a>
-              </li> 
-               <li class="nav-item">
-                   <a href="index.php?entity=command&action=read"><button class="nav-link">Commande</button></a>
-                </li>            
+                  <a href="index.php?entity=acceuil&action=read"><button class="nav-link" style="width:100px">Tableau de bord</button></a>
+                </li>
+                <li class="nav-item">
+                  <a href="index.php?entity=produit&action=read"><button class="nav-link" >Produits</button></a>
+                </li>
+                <li class="nav-item">
+                  <a href="index.php?entity=client&action=read"><button class="nav-link">Clients</button></a>
+                </li>  
+                <li class="nav-item">
+                   <a href="index.php?entity=command&action=read"><button class="nav-link">Commandes</button></a>
+                </li> 
+                <li class="nav-item">
+                  <a href="index.php?entity=achat&action=read"><button class="nav-link">Achats</button></a>
+                </li>
+                <li class="nav-item">
+                  <a href="index.php?entity=reglement&action=read"><button class="nav-link">Règlements</button></a>
+                </li>           
             </ul>
-            <!-- <form class="d-flex" action="">
-              <input id="inputRecherche" type="text" placeholder="Taper ici pour rechercher">
+            <form class="d-flex" action="index.php?entity=client&action=rechercher" method="POST">
+              <input id="inputRecherche" type="text" name="nom_client" placeholder="Taper ici pour rechercher">
               <button class="btnRecherche">Rechercher</button>
-            </form> -->
-            <!-- <a href=""><button class="notif">N</button></a> -->
-            
+            </form>
+            <a href=""><button class="notif">N</button></a> 
           </div>
         </div>
       </nav>
@@ -59,11 +58,11 @@
             </colgroup>
             <thead style="position: fixed;">
                 <tr class="trMedocTble">
-                    <th style="width: 200px;">Numero </th>
-                    <th style="width: 200px;">Nom </th>
-                    <th style="width: 200px;">Type </th>
+                    <th style="width: 200px;">Numéro de client</th>
+                    <th style="width: 200px;">Nom</th>
+                    <th style="width: 200px;">Type de client</th>
                     <th style="width: 200px;">Adresse</th>
-                    <th style="width: 200px;">Telephone</th>
+                    <th style="width: 200px;">Téléphone</th>
                     <th style="width: 200px;">Email</th>
                     <th style="width: 210px; background-color:rgb(33, 33, 33);color: white;">Action</th>
                 </tr>
@@ -101,7 +100,7 @@
                 <form action="index.php?entity=client&action=create" method="POST">
                     <label for="nom_client">Nom :</label>
                     <input type="text" name="nom_client" id="nom_client" required>
-                    <label for="type_client">Type client :</label>
+                    <label for="type_client">Type de client :</label>
                     <select name="type_client" id="type_client">
                         <option value="Detaillant">Detaillant</option>
                         <option value="Consommateur">Consommateur</option>
@@ -121,24 +120,29 @@
     <div id="modal1" class="modal1">
             <div class="modal-content1">
                 <span class="close" onclick="closeModal1()">&times;</span>
-                <h2>Modification un client</h2>
-                <form id="client-form" action="index.php?entity=client&action=update" method="POST">
-                    <label for="nom_client1">Nom :</label>
-                    <input type="text" name="nom_client1" id="nom_client1">
-                    <label for="type_client1">Type :</label>
-                    <select name="type_client1" id="type_client1">
-                        <option value="Detaillant">Detaillant</option>
-                        <option value="Consommateur">Consommateur</option>
-                        <option value="Grossiste">Grossiste</option>
-                    </select>
-                    <label for="adresse1">Adresse :</label>
-                    <input type="text" name="adresse1" id="adresse1">
-                    <label for="telephone1">Telephone :</label>
-                    <input type="text" name="telephone1" id="telephone1">
-                    <label for="email1">Email :</label>
-                    <input type="text" name="email1" id="email1">
-                    <button type="submit" class="btn2">Enregistrer</button>
-                </form>
+               <h2>Modification d'un client</h2>
+                    <form id="client-form" action="index.php?entity=client&action=update" method="POST">
+                        <label for="nom_client1">Nom :</label>
+                        <input type="text" name="nom_client1" id="nom_client1">
+    
+                        <label for="type_client1">Type de client:</label>
+                        <select name="type_client1" id="type_client1">
+                            <option value="Detaillant">Detaillant</option>
+                            <option value="Consommateur">Consommateur</option>
+                            <option value="Grossiste">Grossiste</option>
+                        </select>
+    
+                        <label for="adresse1">Adresse :</label>
+                        <input type="text" name="adresse1" id="adresse1">
+    
+                        <label for="telephone1">Téléphone :</label>
+                        <input type="text" name="telephone1" id="telephone1">
+    
+                        <label for="email1">Email :</label>
+                        <input type="email" name="email1" id="email1">
+    
+                        <button type="submit" class="btn2">Enregistrer</button>
+                    </form>
             </div>
     </div> 
 

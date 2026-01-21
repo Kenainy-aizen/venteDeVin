@@ -22,7 +22,7 @@ body{
 }
 .d-flex {
     float: inline-end;
-    margin-left: 600px;
+    margin-left: 535px;
 }
 #inputRecherche {
     
@@ -45,15 +45,20 @@ body{
     
 }
 .btnRecherche {
-    background-color: red;
-    border: none;
-    color: white;
-    border-radius: 4px;
-    height: 30px;
-    width: 120px;
-    
-    
+   background-color: darkblue;
+   border: none;
+   color: white;
+   border-radius: 4px;
+   height: 30px;
+   width: 120px;
 }
+
+
+.btnRecherche:hover{
+    background-color: aqua;
+    color: black;
+}
+
 .trMedocTble {
     background-color: #86e89b;
 }

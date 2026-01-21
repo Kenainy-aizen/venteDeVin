@@ -87,18 +87,38 @@ class ProduitController {
     }
 
     public function delete($num_produit) {
+    header('Content-Type: application/json');
 
-        if($num_produit) {
-
-            $this->model->delete($num_produit);
-            echo json_encode(['success' => true]);
-
-        } else {
-            echo json_encode(['success' => false]);
+    try {
+        if (!$num_produit) {
+            throw new Exception("ID du produit manquant");
         }
+
+        $result = $this->model->delete($num_produit);
+
+        if (!$result) {
+            throw new Exception("Échec de la suppression en base de données");
+        }
+
+        echo json_encode([
+            'success' => true
+        ]);
+    } catch (Exception $e) {
+        echo json_encode([
+            'success' => false,
+            'error' => $e->getMessage()
+        ]);
+    }
+}
+
+
+    public function rechercher() {
+
+        $nomProduit = $_POST['design'];
+        $produit = $this->model->rechercher($nomProduit);    
+        include __DIR__ . '/../Views/produit/read.php';
 
     }
 }   
-
 
 ?>

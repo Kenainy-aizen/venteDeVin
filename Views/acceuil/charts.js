@@ -49,7 +49,7 @@ function drawCharts() {
         legend: { position: 'right', textStyle: { fontSize: 16, color: 'white' } }
     };
 
-    const options5 = { ...options4, title: "Le type de client a vendu", chartArea: { left: 10, top: 75, width: '100%', height: '80%' } };
+    const options5 = { ...options4, title: "Les ventes par type de client", chartArea: { left: 10, top: 75, width: '100%', height: '80%' } };
 
     // Dessin des graphiques
     new google.visualization.ColumnChart(document.getElementById("myChart1")).draw(data1, options1);
