@@ -123,6 +123,10 @@
         case 'rechercher':
             $controller->rechercher();
             break;
+
+        case 'ajaxFactures':
+            $controller->ajaxFactures();
+            break;
        
         default: 
             $controller->index();

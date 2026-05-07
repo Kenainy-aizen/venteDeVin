@@ -71,4 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+
+    //Pour le modifier
+    
 });

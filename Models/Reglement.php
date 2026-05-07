@@ -141,7 +141,7 @@
             
             $pdf->SetFont('DejaVu','B',10);
             $pdf->setX(82);
-            $pdf->Cell(100, 6, txt('RECU-REGLEMENT'), 0, 0, 'L');
+            $pdf->Cell(100, 6, txt('REÇU DU PAIEMENT'), 0, 0, 'L');
             $pdf->Ln(8);
 
              $pdf->SetFont('DejaVu','',10);
@@ -361,6 +361,17 @@
                 $stmt->execute();
 
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+
+        public function rechercherFacturesAjax($search) {
+            $sql = "SELECT f.num_facture,f.date_facture
+                    FROM FACTURE f
+                    JOIN CLIENT c ON f.num_client = c.num_client
+                    WHERE c.nom_client LIKE :search
+                    ORDER BY f.date_facture DESC;";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(['search' => "%$search%"]);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
     }

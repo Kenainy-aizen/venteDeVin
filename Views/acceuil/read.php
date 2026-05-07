@@ -94,29 +94,36 @@
 
     <!-- <div> <canvas id="myChart" style="background-color: white; border-radius: 10px;"></canvas></div> -->
     <div id="nbFac">
-        <h2 style="margin-left: 7px;margin-top: 10px;">Nombre facture de ce mois :</h2>
-        <h1 style="margin-left: 7px;margin-top: 0px;"><?= $nbFac['nb'] ?> factures</h1>
-    </div>
-    <div id="recetotal">
-        <h2 style="margin-left: 7px;margin-top: 10px;">Le recette total :</h2>
-        <h1 style="margin-left: 7px;margin-top: 23px;"><?= $recetteTotal['recette']?> ar</h1>
-    </div>
-    <div id="reste">
-        <h2 style="margin-left: 7px;margin-top: 10px;">Recu :</h2>
-        <h1 style="margin-left: 7px;margin-top: 23px;"><?= $totalReg['total']?> ar</h1>
-    </div>
-    <div id="totalReg">
-        <h2 style="margin-left: 7px;margin-top: 10px;">Pas paye :</h2>
-        <h1 style="margin-left: 7px;margin-top: 23px;"><?= $totalPaye?> ar</h1>
-        <button class="open-modal-btn" onclick="openModal()">Afficher</button>
-    </div>
-    <div id="proVendu">
-        <h2 style="margin-left: 7px;margin-top: 10px;">Produit vendu de ce mois :</h2>
-        <h1 style="margin-left: 7px;margin-top: 0px;"><?= $totalBout?> bouteilles</h1>
-    </div>
-    <div id="stock">
-        <h2 style="margin-left: 7px;margin-top: 10px;">Produit stocke :</h2>
-        <h1 style="margin-left: 7px;margin-top: 23px;"><?= $stock['nb']?> bouteilles</h1>
+    <h2 style="margin-left: 7px;margin-top: 10px;">Nombre de factures :</h2>
+    <h1 style="margin-left: 7px;margin-top: 23px;"><?= $nbFac['nb'] ?> factures</h1>
+</div>
+
+<div id="recetotal">
+    <h2 style="margin-left: 7px;margin-top: 10px;">Recette totale :</h2>
+    <h1 style="margin-left: 7px;margin-top: 23px;"><?= $recetteTotal['recette'] ?> Ar</h1>
+</div>
+
+<div id="reste">
+    <h2 style="margin-left: 7px;margin-top: 10px;">Montant reçu :</h2>
+    <h1 style="margin-left: 7px;margin-top: 23px;"><?= $totalReg['total'] ?> Ar</h1>
+</div>
+
+<div id="totalReg">
+    <h2 style="margin-left: 7px;margin-top: 10px;">Montant non payé :</h2>
+    <h1 style="margin-left: 7px;margin-top: 23px;"><?= $totalPaye ?> Ar</h1>
+    <button class="open-modal-btn" onclick="openModal()">Afficher</button>
+</div>
+
+<div id="proVendu">
+    <h2 style="margin-left: 7px;margin-top: 10px;">Produits vendus :</h2>
+    <h1 style="margin-left: 7px;margin-top: 23px;"><?= $totalBout ?> bouteilles</h1>
+</div>
+
+<div id="stock">
+    <h2 style="margin-left: 7px;margin-top: 10px;">Produits en stock :</h2>
+    <h1 style="margin-left: 7px;margin-top: 23px;"><?= $stock['nb'] ?> bouteilles</h1>
+</div>
+
     </div>
     <div id="myChart2" style="border-radius: 10px;"></div>
     <div id="myChart3" style="border-radius: 10px;"></div>

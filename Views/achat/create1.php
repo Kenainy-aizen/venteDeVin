@@ -197,4 +197,26 @@
 endif;
 ?>
 
+<?php if (isset($_GET['clientExist']) && $_GET['clientExist'] == 0): ?>
+<script>
+Swal.fire({
+    icon: 'error',
+    title: 'Erreur',
+    text: 'Le client est non inscrit',
+    confirmButtonText: 'OK'
+});
+</script>
+<?php endif; ?>
+
+<?php if (isset($_GET['produitExist']) && $_GET['produitExist'] == 0): ?>
+<script>
+Swal.fire({
+    icon: 'error',
+    title: 'Erreur',
+    text: 'Produit non trouvé',
+    confirmButtonText: 'OK'
+});
+</script>
+<?php endif; ?>
+
 

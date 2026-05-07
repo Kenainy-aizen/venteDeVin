@@ -20,11 +20,13 @@ function drawCharts() {
         hAxis: { title: "Mois", titleTextStyle: { color: 'white', fontSize: 18 }, textStyle: { color: 'white', fontSize: 14 } },
         vAxis: { title: "Recette (Ar)", titleTextStyle: { color: 'white', fontSize: 18 }, textStyle: { color: 'white', fontSize: 14 } },
         legend: { textStyle: { color: 'white', fontSize: 16 } },
-        series: { 0: { color: 'yellow', lineWidth: 5, pointSize: 8, pointShape: 'circle' } }
+        series: { 0: { color: 'yellow', lineWidth: 5, pointSize: 8, pointShape: 'circle' },
+                  1: { color: 'red', lineWidth: 5, pointSize: 8, pointShape: 'circle' }
+                }
     };
 
     const options3 = {
-        title: "Le produit vendu ce mois",
+        title: "Produits vendus ce mois-ci",
         fontName: 'Poppins',
         backgroundColor: '#28a745',
         titleTextStyle: { fontSize: 25, color: 'white' },

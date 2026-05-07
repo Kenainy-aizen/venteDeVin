@@ -68,8 +68,15 @@ class ClientController {
             $email = $_POST['email1'];
             $type = $_POST['type_client1'];
 
-            $this->model->update($num_client,$nom_client,$type,$adresse,$telephone,$email);
-            header('Location: index.php?entity=client');
+            $ok = $this->model->update($num_client,$nom_client,$type,$adresse,$telephone,$email);
+
+            if($ok) {
+                header('Location: index.php?entity=client&success=1');
+                exit();
+            } else {
+                header('Location: index.php?entity=client&error=1');
+                exit();
+            }
         }
     }
 

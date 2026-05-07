@@ -52,6 +52,19 @@
     
         </div>
         <br><br>
+            <div class="filters">
+                <label class="switch">
+                    <input type="checkbox" id="attente" checked onchange="filtrer()">
+                    <span class="slider attente"></span>
+                    <span class="text">En attente</span>
+                </label>
+
+                <label class="switch">
+                    <input type="checkbox" id="regle" checked onchange="filtrer()">
+                    <span class="slider regle"></span>
+                    <span class="text">Réglé</span>
+                </label>
+            </div>      
         
         <table class="tbl" id="AchatsVidy">
           
@@ -64,7 +77,7 @@
 
             
             </colgroup>
-            
+
             <thead  style="position: fixed;">
                 <tr class="trMedocTble">
                     <th style="width: 200px;">Numéro de commande</th>
@@ -79,7 +92,7 @@
               <tbody>
 
               <?php foreach ($command as $command) : ?>
-              <tr>
+              <tr data-statut="<?= strtolower($command['statut']) ?>">
                   <td> <?= $command['num_bon_commande'] ?></td>
                   <td> <?= $command['nom_client'] ?></td>
                   <td> <?= $command['date_commande'] ?></td>
@@ -157,6 +170,24 @@
             } 
 
         };
+
+        function filtrer() {
+            const showAttente = document.getElementById('attente').checked;
+            const showRegle = document.getElementById('regle').checked;
+
+            document.querySelectorAll("tr[data-statut]").forEach(row => {
+            const statut = row.dataset.statut;
+
+        if (
+            (statut === 'en attente' && showAttente) ||
+            (statut === 'regle' && showRegle)
+        ) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+}
     </script>
 
     <script src="/lib/sweetalert2/sweetalert2.all.min.js" ></script>
@@ -164,6 +195,27 @@
     
     
 </body>
+<?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
+<script>
+Swal.fire({
+    icon: 'success',
+    title: 'Succès',
+    text: 'Le commande a été modifié avec succès',
+    confirmButtonText: 'OK'
+});
+</script>
+<?php endif; ?>
+
+<?php if (isset($_GET['error']) && $_GET['error'] == 1): ?>
+<script>
+Swal.fire({
+    icon: 'error',
+    title: 'Erreur',
+    text: 'La modification a échoué',
+    confirmButtonText: 'OK'
+});
+</script>
+<?php endif; ?>
 </html>
 
  

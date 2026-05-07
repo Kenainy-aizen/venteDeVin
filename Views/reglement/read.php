@@ -101,7 +101,7 @@
 
                     <tr>
 
-                        <td style="text-align"> <input type="checkbox" name="selected_reglements[]" value="<?= $ligne['num_reglement'] ?>" style="width: 30px"> <?= $ligne['num_reglement'] ?></td>
+                        <td style="text-align"> <input type="checkbox" name="selected_reglements[]" value="<?= $ligne['num_reglement'] ?>" style="width: 30px" > <?= $ligne['num_reglement'] ?></td>
 
                         <?php if( $i === 0 ): ?>
                             <td rowspan ="<?= $rowspan ?>"> <?= $numFacture ?></td>
@@ -148,11 +148,13 @@
                 <h2>Ajouter un reglement</h2>
                 <form id="reglement-form" method="POST">
                     <label for="date">Date :</label>
-                    <input type="date" id="date" name="date" value="<?= date('Y-m-d') ?>">
+                    <input type="date" id="date" name="date" value="<?= date('Y-m-d') ?>" required>
                     <label for="nom">Nom du client :</label>
-                    <input type="text" id="nom" name="nom">
+                    <input type="text" id="nom" name="nom" required>
                     <label for="num_facture">Numéro de facture :</label>
-                    <input type="text" name="num_facture" id="num_facture" required>
+                    <select name="num_facture" id="num_facture" required>
+                        <option value="">-- Sélectionner une facture --</option>
+                    </select>
                     <label for="mode_paye">Mode de paiement :</label>
                     <select name="mode_paye" id="mode_paye">
                         <option value="Espece">Espece</option>
@@ -160,7 +162,7 @@
                         <option value="Carte">Carte</option>
                     </select>
                     <label for="montant">Montant :</label> 
-                    <input type="number" name="montant" id="montant">               
+                    <input type="number" name="montant" id="montant" required>               
                     <button type="submit" class="btn">Enregistrer</button>
                 </form>
             </div>
@@ -172,11 +174,11 @@
                 <h2>Modification d'un règlement</h2>
                 <form id="modif-form" action="index.php?entity=reglement&action=update" method="POST">
                     <label for="date1">Date :</label>
-                    <input type="date" id="date1" name="date_reglement" >
+                    <input type="date" id="date1" name="date_reglement" required>
                     <label for="nom1">Nom du client :</label>
-                    <input type="text" id="nom1" name="nom_client">
+                    <input type="text" id="nom1" name="nom_client" required>
                     <label for="num_facture1">Numéro de facture :</label>
-                    <input type="text" name="num_facture" id="num_facture1">
+                    <input type="text" name="num_facture" id="num_facture1" required>
                     <label for="mode_paye1">Mode de paiement :</label>
                     <select name="mode_paiement" id="mode_paye1">
                         <option value="Espece">Espece</option>
@@ -184,7 +186,7 @@
                         <option value="Carte">Carte</option>
                     </select>
                     <label for="montant1">Montant :</label> 
-                    <input type="number" name="montant_reglement" id="montant1">               
+                    <input type="number" name="montant_reglement" id="montant1" required>               
                     <button type="submit" class="btn">Enregistrer</button>
                 </form>
             </div>
@@ -234,9 +236,62 @@
         
     </script>
 
+    <script>
+document.getElementById('nom').addEventListener('keyup', function () {
+    let nomClient = this.value.trim();
+
+    if (nomClient.length < 2) return;
+
+    fetch(`index.php?entity=reglement&action=ajaxFactures&q=${encodeURIComponent(nomClient)}`)
+        .then(res => res.json())
+        .then(data => {
+            let select = document.getElementById('num_facture');
+            select.innerHTML = '<option value="">-- Sélectionner une facture --</option>';
+
+            if (data.length === 0) {
+                let opt = document.createElement('option');
+                opt.textContent = 'Aucune facture trouvée';
+                opt.disabled = true;
+                select.appendChild(opt);
+                return;
+            }
+
+            data.forEach(f => {
+                let option = document.createElement('option');
+                option.value = f.num_facture;
+                option.textContent = `${f.num_facture} | ${f.date_facture}`;
+                select.appendChild(option);
+            });
+        })
+        .catch(err => console.error('Erreur AJAX:', err));
+});
+</script>
+
+
     <script src="/lib/sweetalert2/sweetalert2.all.min.js" ></script>
     <script src="/Views/reglement/script.js"></script>
     <script src="/Views/reglement/test1.js"></script>
 
 </body>
+<?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
+<script>
+Swal.fire({
+    icon: 'success',
+    title: 'Succès',
+    text: 'Le règlement a été modifié avec succès',
+    confirmButtonText: 'OK'
+});
+</script>
+<?php endif; ?>
+
+<?php if (isset($_GET['error']) && $_GET['error'] == 1): ?>
+<script>
+Swal.fire({
+    icon: 'error',
+    title: 'Erreur',
+    text: 'La modification a échoué',
+    confirmButtonText: 'OK'
+});
+</script>
+<?php endif; ?>
 </html>

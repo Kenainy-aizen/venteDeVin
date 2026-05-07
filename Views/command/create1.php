@@ -56,13 +56,13 @@
             <form id="formAchat" method="post" action="index.php?entity=command&action=create">
 
                 <label for="dateAchat">Date de reglement:</label>
-                <input type="date" id="dateAchat" name="date_cmd" value="<?= date('Y-m-d') ?>">
+                <input type="date" id="dateAchat" name="date_cmd" value="<?= date('Y-m-d') ?>" required>
 
                 <label for="nomClient">Nom du Client:</label>
-                <input type="text" id="nomClient" name="nom_client" >
+                <input type="text" id="nomClient" name="nom_client"required>
 
                 <label for="nom_produit">Nom de produit:</label>
-                <input type="text" id="nom_produit" name="design" list="listeProduits">
+                <input type="text" id="nom_produit" name="design" list="listeProduits" >
                
                   <datalist id="listeProduits"></datalist>
 
@@ -196,5 +196,27 @@
     unset($_SESSION['stock_initial']);
 endif;
 ?>
+
+<?php if (isset($_GET['clientExist']) && $_GET['clientExist'] == 0): ?>
+<script>
+Swal.fire({
+    icon: 'error',
+    title: 'Erreur',
+    text: 'Le client est non inscrit',
+    confirmButtonText: 'OK'
+});
+</script>
+<?php endif; ?>
+
+<?php if (isset($_GET['produitExist']) && $_GET['produitExist'] == 0): ?>
+<script>
+Swal.fire({
+    icon: 'error',
+    title: 'Erreur',
+    text: 'Produit non trouvé',
+    confirmButtonText: 'OK'
+});
+</script>
+<?php endif; ?>
 
 

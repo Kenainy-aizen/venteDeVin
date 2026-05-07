@@ -39,8 +39,14 @@ require_once __DIR__ . '/../config/db.php';
                         echo "la valeur de trueAchat ". $trueAchat;
                     if(isset($_POST['nomClient'],$_POST['nbr'],$_POST['dateAchat'])) {
                         $num_produit = $this->model->chercherNumParNomProduit($_POST['nom_produit']);
+
+                        if(empty($num_produit)) {
+                                header('Location: index.php?entity=achat&action=create&produitExist=0');
+                                exit();
+                        }
                       //  echo "la valeur de num_produit ".  $num_produit[0]['num_produit'];
                         $result = $this->model->soustraction($num_produit[0]['num_produit'],$_POST['nbr']);
+
                         echo $result;
                 
 
@@ -49,6 +55,10 @@ require_once __DIR__ . '/../config/db.php';
                             $existe = $this->model->verification($trueAchat);
                            // echo $existe;
                             $num_client = $this->model->chercherNumParNomClient(trim($_POST['nomClient']));
+                            if(empty($num_client)) {
+                                header('Location: index.php?entity=achat&action=create&clientExist=0');
+                                exit();
+                            }
                             if(count($existe) == 0){
                                 $this->model->createFacture($trueAchat,$_POST['dateAchat'],$num_client[0]['num_client']);
                             }

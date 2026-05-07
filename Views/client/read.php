@@ -107,11 +107,11 @@
                         <option value="Grossiste">Grossiste</option>
                     </select>
                     <label for="adresse">Adresse :</label>
-                    <input type="text" name="adresse" id="adresse">
+                    <input type="text" name="adresse" id="adresse" required>
                     <label for="telephone">Telephone :</label>
-                    <input type="number" id="telephone" name="telephone">
+                    <input type="number" id="telephone" name="telephone" required>
                     <label for="email">Email :</label>
-                    <input type="text" id="email" name="email">
+                    <input type="text" id="email" name="email" required>
                     <button type="submit" class="btn">Enregistrer</button>
                 </form>
             </div>
@@ -123,7 +123,7 @@
                <h2>Modification d'un client</h2>
                     <form id="client-form" action="index.php?entity=client&action=update" method="POST">
                         <label for="nom_client1">Nom :</label>
-                        <input type="text" name="nom_client1" id="nom_client1">
+                        <input type="text" name="nom_client1" id="nom_client1" required>
     
                         <label for="type_client1">Type de client:</label>
                         <select name="type_client1" id="type_client1">
@@ -133,13 +133,13 @@
                         </select>
     
                         <label for="adresse1">Adresse :</label>
-                        <input type="text" name="adresse1" id="adresse1">
+                        <input type="text" name="adresse1" id="adresse1" required>
     
                         <label for="telephone1">Téléphone :</label>
-                        <input type="text" name="telephone1" id="telephone1">
+                        <input type="text" name="telephone1" id="telephone1" required>
     
                         <label for="email1">Email :</label>
-                        <input type="email" name="email1" id="email1">
+                        <input type="email" name="email1" id="email1" required>
     
                         <button type="submit" class="btn2">Enregistrer</button>
                     </form>
@@ -194,4 +194,27 @@
        
 
 </body>
+
+<?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
+<script>
+Swal.fire({
+    icon: 'success',
+    title: 'Succès',
+    text: 'Le client a été modifié avec succès',
+    confirmButtonText: 'OK'
+});
+</script>
+<?php endif; ?>
+
+<?php if (isset($_GET['error']) && $_GET['error'] == 1): ?>
+<script>
+Swal.fire({
+    icon: 'error',
+    title: 'Erreur',
+    text: 'La modification a échoué',
+    confirmButtonText: 'OK'
+});
+</script>
+<?php endif; ?>
+
 </html>

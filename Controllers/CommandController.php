@@ -39,8 +39,14 @@
 
                 $num = $this->model->nomClientTonumClient($nom);
                 
-                $this->model->updateCMD($num_bon_commande,$num[0]['num_client'],$date,$statut);
-                header('Location: index.php?entity=command&action=index');
+                $ok = $this->model->updateCMD($num_bon_commande,$num[0]['num_client'],$date,$statut);
+                if($ok) {
+                    header('Location: index.php?entity=command&success=1');
+                    exit();
+                } else {
+                    header('Location: index.php?entity=command&error=1');
+                    exit();
+                }
 
            }
             
@@ -71,10 +77,18 @@
 
                         $nomClient = $_POST['nom_client'];
                         $numClient = $this->model->nomClientTonumClient(trim($nomClient));
+                        if(empty($numClient)) {
+                            header('Location: index.php?entity=command&action=create&clientExist=0');
+                            exit();
+                        }
                         echo $numClient;
 
                         $design = $_POST['design'];
                         $num_produit = $this->model->designTonumProduit(trim($design));
+                        if(empty($num_produit)) {
+                            header('Location: index.php?entity=command&action=create&produitExist=0');
+                            exit();
+                        }
                         // echo $num_produit[0]['num_produit'];
                         $date = $_POST['date_cmd'];
                         // echo $design;

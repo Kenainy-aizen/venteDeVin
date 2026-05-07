@@ -120,7 +120,7 @@
                     <label for="nombre">Nombre :</label>
                     <input type="number" name="nombre" id="nombre" required> 
 
-                    <button type="submit" class="btn">Enregistrer</button>
+                    <button type="submit" class="btn" >Enregistrer</button>
                 </form>
             </div>
     </div>
@@ -131,15 +131,15 @@
                 <h2>Modification d'un produit</h2>
                 <form id="medicament-form1" method="POST">
                     <label for="design1">Désignation :</label>
-                    <input type="text" name="design1" id="design1" value="" >
+                    <input type="text" name="design1" id="design1" value="" required>
                     <label for="prix_detaillant1">Prix détaillant :</label>
-                    <input type="number" name="prix_detaillant1" id="prix_detaillant1" value="" >
+                    <input type="number" name="prix_detaillant1" id="prix_detaillant1" value="" required>
                     <label for="prix_gros1">Prix de gros</label>
-                    <input type="number" name="prix_gros1" id="prix_gros1" value="" >
+                    <input type="number" name="prix_gros1" id="prix_gros1" value="" required>
                     <label for="prix_consommateur1">Prix consommateur :</label>
-                    <input type="number" name="prix_consommateur1" id="prix_consommateur1" value="" >
+                    <input type="number" name="prix_consommateur1" id="prix_consommateur1" value="" required>
                     <label for="nombre1">Nombre</label>
-                    <input type="number" name="nombre1" id="nombre1" value="" >
+                    <input type="number" name="nombre1" id="nombre1" value="" required>
                     <button type="submit" class="btn2">Enregistrer</button>
                 </form>
             </div>
@@ -199,6 +199,17 @@
             document.getElementById("modal1").style.display = "none";
         }
 
+        // function confirm() {
+        //     Swal.fire(
+        //                     'Modifier !',
+        //                     'L\'élément a été modifier.',
+        //                     'success'
+        //                 ).then(() => {
+                            
+        //                     window.location="http://localhost/index.php?entity=produit";
+        //                 });
+        // }
+
         window.onclick = function(event) {
             const modal1 = document.getElementById('modal1');
             const modal = document.getElementById('modal');
@@ -215,7 +226,30 @@
         <script src="/Views/produit/script.js"></script>
         <script src="/Views/produit/test1.js"></script>
        
-        
+
 
 </body>
+
+<?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
+<script>
+Swal.fire({
+    icon: 'success',
+    title: 'Succès',
+    text: 'Le produit a été modifié avec succès',
+    confirmButtonText: 'OK'
+});
+</script>
+<?php endif; ?>
+
+<?php if (isset($_GET['error']) && $_GET['error'] == 1): ?>
+<script>
+Swal.fire({
+    icon: 'error',
+    title: 'Erreur',
+    text: 'La modification a échoué',
+    confirmButtonText: 'OK'
+});
+</script>
+<?php endif; ?>
+
 </html>

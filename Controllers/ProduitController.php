@@ -73,18 +73,18 @@ class ProduitController {
             $prix_gros = $_POST['prix_gros1'];
             $nombre = $_POST['nombre1'];
 
-            $produit1 = $this->model->update($num_produit, $design, $prix_gros, $prix_consommateur, $prix_detaillant, $nombre);
-
-            if ($produit1) {
-                header('Location: index.php?entity=produit');
-            }
-            else {
-                echo "probleme";
-            }
+            $ok = $this->model->update( $num_produit, $design, $prix_gros, $prix_consommateur, $prix_detaillant, $nombre ); 
+            if ($ok) { 
+                header('Location: index.php?entity=produit&success=1'); 
+                exit; 
+            } else { 
+                header('Location: index.php?entity=produit&error=1'); 
+                exit; 
+            } 
+        }
+    }
     
             
-        } 
-    }
 
     public function delete($num_produit) {
     header('Content-Type: application/json');

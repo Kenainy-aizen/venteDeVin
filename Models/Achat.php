@@ -378,9 +378,9 @@
         public function chercherNumParNomClient($nom_client) {
 
             $query = "SELECT num_client FROM CLIENT WHERE nom_client LIKE :nom_client";
-            $keyword = "%$nom_client%";
+            // $keyword = "%$nom_client%";
             $stmt = $this->conn->prepare($query);
-            $stmt->bindParam(':nom_client',$keyword);
+            $stmt->bindParam(':nom_client',$nom_client);
             $stmt->execute();
 
             return $stmt->fetchAll(PDO::FETCH_ASSOC);

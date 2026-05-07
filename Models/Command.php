@@ -106,7 +106,7 @@
         public function nomClientTonumClient($nomClient) {
             $query = "SELECT num_client FROM CLIENT WHERE nom_client like :num_client";
             $stmt = $this->conn->prepare($query);
-            $stmt->bindValue(':num_client',"%$nomClient%");
+            $stmt->bindValue(':num_client',$nomClient);
             $stmt->execute();
 
             return $stmt->fetchAll(PDO::FETCH_ASSOC);

@@ -347,3 +347,73 @@ label {
 .btn:hover {
     background-color: #218838;
 }
+
+
+
+.filters {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 15px;
+    align-items: center;
+    margin-left: 230px;
+}
+
+.switch {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+}
+
+.switch input {
+    display: none;
+}
+
+.slider {
+    position: relative;
+    width: 50px;
+    height: 26px;
+    background-color: #ccc;
+    border-radius: 30px;
+    transition: 0.3s;
+    margin-right: 8px;
+}
+
+.slider::before {
+    content: "";
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    left: 2px;
+    top: 2px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+/* ON */
+.switch input:checked + .slider {
+    background-color: #28a745;
+}
+
+.switch input:checked + .slider::before {
+    transform: translateX(24px);
+}
+
+/* Couleurs spécifiques */
+.slider.attente {
+    background-color: #ffc107;
+}
+
+.switch input:checked + .slider.attente {
+    background-color: #ffc107;
+}
+
+.switch input:checked + .slider.regle {
+    background-color: #28a745;
+}
+
+.text {
+    font-size: 15px;
+    font-weight: 500;
+}

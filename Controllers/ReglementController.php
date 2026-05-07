@@ -79,8 +79,13 @@
                 $num_facture = $_POST['num_facture'];
                 $nom_client = $_POST['nom_client'];
 
-                $this->model->update($num_reglement, $num_facture, $date, $mode, $montant, $nom_client);
-                header('Location: index.php?entity=reglement');
+                $ok = $this->model->update($num_reglement, $num_facture, $date, $mode, $montant, $nom_client);
+
+                if($ok) {
+                    header('Location: index.php?entity=reglement&success=1');
+                } else {
+                    header('Location: index.php?entity=reglement&error=1');
+                }
 
             }
         }
@@ -97,6 +102,17 @@
             $reglement = $this->model->rechercher($nom_client);
             include __DIR__ . '/../Views/reglement/read.php';
         }
+
+        public function ajaxFactures() {
+        
+            $search = $_GET['q'] ?? '';   
+            $factures = $this->model->rechercherFacturesAjax($search);
+        
+            header('Content-Type: application/json');
+            echo json_encode($factures);
+            
+        } 
+
     }
 
 ?>

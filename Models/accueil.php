@@ -24,6 +24,8 @@ class Accueil {
             SELECT 
             SUM(montant_total) as recette 
             FROM FACTURE
+            WHERE MONTH(date_facture) = MONTH(CURDATE())
+            AND YEAR(date_facture) = YEAR(CURDATE())
            ";
 
         $stmt = $this->conn->prepare($query);
@@ -36,6 +38,8 @@ class Accueil {
             SELECT 
             SUM(montant_reglement) as total 
             FROM REGLEMENT
+            WHERE MONTH(date_reglement) = MONTH(CURDATE())
+            AND YEAR(date_reglement) = YEAR(CURDATE())
            ";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
