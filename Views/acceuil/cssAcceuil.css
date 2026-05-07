@@ -1,264 +1,252 @@
-*{
+* {
     text-decoration: none;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family:
+        "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans",
+        Arial, sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
 }
 
-body{
-    background-color: #395b41;
+body {
+    background-color: #2d5016;
+    min-height: 100vh;
 }
 
+/* ── Navbar ─────────────────────────────────────────── */
 .navbarAll {
-    /* position: fixed; */
-    height: 80px;
     width: 100%;
+}
+
+.navbarAll > div {
+    display: flex;
+    background-color: #28a745;
+    height: 50px;
     align-items: center;
-    /* margin-top: -55px; */
-  
 }
 
 .logo {
-    margin-left: 40px;
-    color: darkblue;
-    font-size: 25px;
-
+    margin-left: 20px;
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    white-space: nowrap;
 }
-.navbarAll div {
+
+#mynavbar {
     display: flex;
-    background-color:#28a745;
-    height: 50px;
     align-items: center;
-    text-align: center;
-
+    flex: 1;
+    margin-left: 10px;
 }
+
 #mynavbar ul {
     display: flex;
-    margin-left: 20px;
-
-}
-#mynavbar li{
     list-style: none;
-    margin-left: 20px;
-   
+    margin: 0;
+    padding: 0;
+    gap: 4px;
 }
+
+#mynavbar li {
+    list-style: none;
+}
+
 .nav-link {
-    color: whitesmoke;
+    color: white;
     border: none;
-    background-color:#28a745;
-    
+    background-color: transparent;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background-color 0.2s;
 }
-.nav-link:hover {
+
+.nav-link:hover,
+.nav-active {
+    background-color: rgba(255, 255, 255, 0.2);
     text-decoration: underline;
 }
 
+/* ── Stats grid ─────────────────────────────────────── */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+    padding: 20px;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 16px 20px;
+    color: white;
+    backdrop-filter: blur(4px);
+    transition:
+        transform 0.15s,
+        box-shadow 0.15s;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.stat-card--warning {
+    background: rgba(220, 53, 69, 0.3);
+    border-color: rgba(220, 53, 69, 0.5);
+}
+
+.stat-icon {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.stat-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    opacity: 0.8;
+    margin-bottom: 4px;
+}
+
+.stat-value {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+/* ── Open modal button ──────────────────────────────── */
+.open-modal-btn {
+    background-color: #dc3545;
+    color: white;
+    padding: 6px 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    margin-top: 4px;
+    transition: background-color 0.2s;
+}
+.open-modal-btn:hover {
+    background-color: #a71d2a;
+}
+
+/* ── Charts wrapper ─────────────────────────────────── */
+.charts-wrapper {
+    padding: 0 20px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
 #myChart2 {
-    width: 730px !important;
-    height: 500px !important;
-    color: blanchedalmond !important;
-    float: left !important;
-    margin-left: 20px;
-    border: white 2px solid;
+    width: 720px !important;
+    height: 480px !important;
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 10px !important;
     overflow: hidden;
+    background: rgba(255, 255, 255, 0.05);
 }
 
 #myChart1 {
-    width: 750px !important;
-    height: 550px !important;
-    color: blanchedalmond !important;
-    margin-left: 800px !important; 
-    margin-top: 10px;
-    border: white 2px solid;
+    width: 720px !important;
+    height: 480px !important;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px !important;
     overflow: hidden;
+    background: rgba(255, 255, 255, 0.05);
 }
 
 #myChart3 {
-    width: 400px !important;
+    width: 380px !important;
     height: 300px !important;
-    color: blanchedalmond !important;
-    margin-left: 800px !important; 
-    margin-top: 10px;
-    border: white 2px solid;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px !important;
     overflow: hidden;
+    background: rgba(255, 255, 255, 0.05);
 }
 
 #myChart4 {
     width: 340px !important;
     height: 300px !important;
-    color: blanchedalmond !important;
-    margin-left: 1210px !important; 
-    margin-top: -298px;
-    border: white 2px solid;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px !important;
     overflow: hidden;
+    background: rgba(255, 255, 255, 0.05);
 }
 
+/* ── Modal ─────────────────────────────────────────── */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+}
 
+.modal-content {
+    background-color: #fff;
+    margin: 6% auto;
+    padding: 24px;
+    border-radius: 12px;
+    width: 85%;
+    max-width: 960px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    animation: slideDown 0.25s ease;
+}
 
-#nbFac {
-    width: 250px;
-    height: 150px;
-    margin-left: 20px;
-    margin-bottom: 10px;
-    background-color: white;
-    /* text-align: center; */
-    border-radius: 10px;
-    border: white 2px solid;
-    background: rgb(78, 78, 78);
+@keyframes slideDown {
+    from {
+        transform: translateY(-40px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.close {
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    color: #555;
+    cursor: pointer;
+    line-height: 1;
+}
+.close:hover {
+    color: #dc3545;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 10px 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #28a745;
     color: white;
-    float: left;
 }
 
-#recetotal {
-    width: 250px;
-    height: 150px;
-    margin-left: 280px; 
-    margin-bottom: 10px;
-    background-color: white;
-    /* text-align: center; */
-    border-radius: 10px;
-    border: white 2px solid;
-    background: rgb(78, 78, 78);
-    color: white;
-    /* float : left; */
+tr:nth-child(even) {
+    background-color: #f8f9fa;
 }
-
-#totalReg {
-    width: 250px;
-    height: 150px;
-      margin-left: 799px; 
-    margin-bottom: 10px;
-    margin-top: -160px;
-    background-color: white;
-    border: white 2px solid;
-    background: rgb(78, 78, 78);
-    color: white;
-    border-radius: 10px;
-    /* float : left; */
-}
-
-#reste {
-    width: 250px;
-    height: 150px;
-    margin-left: 540px; 
-    margin-bottom: 10px;
-    margin-top: -160px;
-    border: white 2px solid;
-    background-color: white;
-    background: rgb(78, 78, 78);
-    color: white;
-    border-radius: 10px;
-}
-
-#proVendu {
-    width: 250px;
-    height: 150px;
-    margin-left: 1058px; 
-    margin-bottom: 10px;
-    margin-top: -160px;
-    background-color: white;
-    background: rgb(78, 78, 78);
-    color: white;
-    border-radius: 10px;
-    border: white 2px solid;
-}
-
-#stock {
-    width: 250px;
-    height: 150px;
-    margin-left: 1320px; 
-    margin-bottom: 10px;
-    margin-top: -160px;
-    background-color: white;
-    background: rgb(78, 78, 78);
-    color: white;
-    border-radius: 10px;
-    border: white 2px solid;
-}
-
-    #clients-non-regles-section {
-            font-family: Arial, sans-serif;
-            margin-top: 20px;
-        }
-
-        /* Bouton d’ouverture */
-        .open-modal-btn {
-            background-color: #007bff;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: 0.3s;
-            margin-left: 140px;
-        }
-        .open-modal-btn:hover {
-            background-color: #0056b3;
-        }
-
-        /* Fond du modal */
-        .modal {
-            display: none; /* caché par défaut */
-            position: fixed;
-            z-index: 10;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.5);
-        }
-
-        /* Contenu du modal */
-        .modal-content {
-            background-color: #fff;
-            margin: 8% auto;
-            padding: 20px;
-            border-radius: 12px;
-            width: 80%;
-            max-width: 900px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            animation: slideDown 0.3s ease;
-        }
-
-        @keyframes slideDown {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        /* Bouton fermer */
-        .close {
-            float: right;
-            font-size: 22px;
-            font-weight: bold;
-            color: #333;
-            cursor: pointer;
-        }
-        .close:hover {
-            color: red;
-        }
-
-        /* Table */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-        }
-
-        th, td {
-            border: 1px solid #ccc;
-            padding: 10px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #007bff;
-            color: white;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }

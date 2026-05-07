@@ -1,47 +1,45 @@
-*{
+* {
     text-decoration: none;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family:
+        "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans",
+        Arial, sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
 }
-body{
+body {
     background-color: #395b41;
 }
-#Medoc , #Entree , #Achats  ,#Acceuil{
-    
+#Medoc,
+#Entree,
+#Achats,
+#Acceuil {
     background-color: darkblue;
     border: none;
     border-radius: 20px;
     padding: 10px 20px;
-    margin: 5px  10px 0px 0px;
+    margin: 5px 10px 0px 0px;
     color: white;
-    
 }
 .d-flex {
     float: inline-end;
     margin-left: 530px;
 }
 #inputRecherche {
-    
     border: 2px solid darkblue;
     border-radius: 4px;
     height: 30px;
     width: 400px;
     padding-left: 10px;
     margin-left: -130px;
-    
-    
 }
-.notif{
+.notif {
     border: none;
     border-radius: 50px;
     padding: 5px 10px;
     margin-left: 10px;
     background-color: rgb(181, 208, 255);
     border: 2px solid darkblue;
-    
 }
 .btnRecherche {
     background-color: darkblue;
@@ -50,10 +48,8 @@ body{
     border-radius: 4px;
     height: 30px;
     width: 120px;
-    
-    
 }
-.btnRecherche:hover{
+.btnRecherche:hover {
     background-color: aqua;
     color: black;
 }
@@ -65,13 +61,13 @@ body{
     width: 1300px;
     height: 40px;
 }
-.titre{
-    cursor:pointer;
+.titre {
+    cursor: pointer;
     color: rgb(43, 209, 201);
     text-align: center;
-     position: fixed; 
+    position: fixed;
     margin-left: 590px;
-    animation:  titre 4s linear infinite;
+    animation: titre 4s linear infinite;
 }
 /* @keyframes titre{
     100%{
@@ -80,40 +76,42 @@ body{
     }
 } */
 
-
 .tblrup {
     margin-left: 150px;
 }
-#medicaments , #enter , #AchatsVidy , #plusVendu ,#rupture {
+#medicaments,
+#enter,
+#AchatsVidy,
+#plusVendu,
+#rupture {
     text-align: center;
     margin-left: 10px;
     margin-right: 50px;
     border-collapse: collapse;
     height: 100px;
-    border-left: solid  #28a745;
-    border-right: solid  #28a745;
-    
+    border-left: solid #28a745;
+    border-right: solid #28a745;
+
     /* width: 1350px; */
 }
 #medicaments {
     margin-left: 145px;
 }
-#Edit , .btnSupprimer { 
+#Edit,
+.btnSupprimer {
     border-radius: 4px;
     height: 30px;
     width: 100px;
     margin: 10px 0px 5px 660px;
     margin: 2px;
-} 
-.tbl tr td , .tblRupture tr td {
+}
+.tbl tr td,
+.tblRupture tr td {
     border-bottom: 1px solid rgb(129, 129, 129);
-    
 }
 .tbl {
-    
     border-left: 4px solid black;
     background-color: rgb(243, 243, 254);
-
 }
 #btn1 {
     border: 2px solid rgb(177, 177, 3);
@@ -125,9 +123,8 @@ body{
     position: fixed;
     border-color: #28a745;
     top: 0;
-
 }
-#btn1:hover{
+#btn1:hover {
     background-color: aqua;
 }
 .active {
@@ -135,27 +132,28 @@ body{
 }
 .ExporPdf {
     border: 2px solid rgb(1, 102, 1);
-    
+
     border-radius: 4px;
     height: 30px;
     width: 120px;
     margin: 10px 0px 5px 770px;
-    
+
     position: fixed;
     top: 0;
     z-index: 100;
     background-color: rgb(167, 233, 191);
-    
 }
 
-.Rupture , .Plusvendu , .recette {
-   border: 2px solid rgb(125, 83, 0);
-   background-color: rgb(255, 240, 215);
-   color: black;
-   width: 250px;
-   height: 70px;
-   border-radius: 4px;
-   margin: 2px 20px;
+.Rupture,
+.Plusvendu,
+.recette {
+    border: 2px solid rgb(125, 83, 0);
+    background-color: rgb(255, 240, 215);
+    color: black;
+    width: 250px;
+    height: 70px;
+    border-radius: 4px;
+    margin: 2px 20px;
 }
 .tblRupture {
     border-collapse: collapse;
@@ -168,7 +166,7 @@ body{
     height: 40px;
     background-color: white;
 }
-.tblRupture tr{
+.tblRupture tr {
     height: 40px;
 }
 .navbarAll {
@@ -177,14 +175,12 @@ body{
     width: 100%;
     align-items: center;
     margin-top: -55px;
-  
 }
 
 .logo {
     margin-left: 40px;
     color: darkblue;
     font-size: 25px;
-
 }
 .navbarAll div {
     display: flex;
@@ -192,18 +188,15 @@ body{
     height: 50px;
     align-items: center;
     text-align: center;
-
 }
 #mynavbar ul {
     display: flex;
     margin-left: 20px;
     background-color: #28a745;
-
 }
-#mynavbar li{
+#mynavbar li {
     list-style: none;
     margin-left: 20px;
-   
 }
 .nav-link {
     color: whitesmoke;
@@ -229,7 +222,7 @@ body{
 }
 
 .modal-content1 {
-    background-color: white; 
+    background-color: white;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
@@ -344,7 +337,8 @@ label {
     margin-top: 20px;
 }
 
-.modal-buttons2 button, .modal-buttons2 a {
+.modal-buttons2 button,
+.modal-buttons2 a {
     padding: 10px 15px;
     margin: 5px;
     border: none;
@@ -361,4 +355,20 @@ label {
 #confirm-delete {
     background: red;
     color: white;
+}
+
+/* Low-stock row highlight */
+tr.stock-low td {
+    background-color: #fff3cd;
+}
+
+.badge-warning {
+    display: inline-block;
+    background-color: #dc3545;
+    color: white;
+    font-size: 11px;
+    padding: 2px 6px;
+    border-radius: 10px;
+    margin-left: 4px;
+    vertical-align: middle;
 }

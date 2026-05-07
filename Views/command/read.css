@@ -1,45 +1,44 @@
-*{
+* {
     text-decoration: none;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family:
+        "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans",
+        Arial, sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
 }
 
-body{
+body {
     background-color: #395b41;
 }
 
-#Medoc , #Entree , #Achats  ,#Acceuil{
-    
-    /* background-color: darkblue; */ background-color: #28a745;
+#Medoc,
+#Entree,
+#Achats,
+#Acceuil {
+    /* background-color: darkblue; */
+    background-color: #28a745;
     border: none;
     border-radius: 20px;
     padding: 10px 20px;
-    margin: 5px  10px 0px 0px;
+    margin: 5px 10px 0px 0px;
     color: white;
-    
-    
 }
 .d-flex {
     float: inline-end;
     margin-left: 558px;
 }
 #inputRecherche {
-    
     border: 2px solid darkblue;
     border-radius: 4px;
     height: 30px;
     width: 400px;
     padding-left: 10px;
     margin-left: -130px;
-    
-    
 }
 
 #case {
-     justify-content: flex-start;
+    justify-content: flex-start;
 }
 #formAchat {
     margin: 0;
@@ -47,17 +46,16 @@ body{
 }
 
 td form {
-  margin: 0; /* pour supprimer l'espace par défaut du form */
+    margin: 0; /* pour supprimer l'espace par défaut du form */
 }
 
-.notif{
+.notif {
     border: none;
     border-radius: 50px;
     padding: 5px 10px;
     margin-left: 10px;
     background-color: rgb(181, 208, 255);
     border: 2px solid darkblue;
-    
 }
 .btnRecherche {
     background-color: darkblue;
@@ -67,15 +65,15 @@ td form {
     height: 30px;
     width: 120px;
 }
-.btnRecherche:hover{
+.btnRecherche:hover {
     background-color: aqua;
     color: black;
 }
 .trMedocTble {
-    /* background-color: rgb(241, 241, 241); */background-color: #86e89b;
+    /* background-color: rgb(241, 241, 241); */
+    background-color: #86e89b;
 }
 .trMedocTble th {
-    
     height: 40px;
 }
 .tblrup {
@@ -83,20 +81,18 @@ td form {
 }
 
 .titre {
-    cursor:pointer;
+    cursor: pointer;
     color: rgb(43, 209, 201);
     text-align: center;
-     position: fixed; 
+    position: fixed;
     margin-left: 600px;
     top: 80px;
-    animation:  titre 4s linear infinite;
+    animation: titre 4s linear infinite;
 }
 
 .teste {
-     
     position: absolute;
     top: 600px;
-    
 }
 /* @keyframes titre{
     100%{
@@ -104,20 +100,24 @@ td form {
         color: rgb(187, 238, 233);
     }
 } */
-#medicaments , #enter , #AchatsVidy , #plusVendu ,#rupture {
+#medicaments,
+#enter,
+#AchatsVidy,
+#plusVendu,
+#rupture {
     text-align: center;
     margin-left: 231px;
     margin-right: 20px;
     border-collapse: collapse;
     height: 100px;
-    border-left: solid  #28a745;
-    border-right: solid  #28a745;
-
+    border-left: solid #28a745;
+    border-right: solid #28a745;
 }
 #medicaments {
     margin-left: 250px;
 }
-#Edit , .btnSupprimer {
+#Edit,
+.btnSupprimer {
     border-radius: 4px;
     height: 30px;
     width: 100px;
@@ -129,16 +129,14 @@ table {
     border-left: #218838;
     border-right: #218838;
 }
-.tbl tr td , .tblRupture tr td {
+.tbl tr td,
+.tblRupture tr td {
     border-bottom: 1px solid rgb(129, 129, 129);
     border-left: #28a745;
-    
 }
 .tbl {
-    
     border-left: 4px solid black;
     background-color: rgb(243, 243, 254);
-
 }
 .btn1 {
     border: 2px solid rgb(177, 177, 3);
@@ -152,7 +150,7 @@ table {
     top: 0;
     /* z-index: 100; */
 }
-.btn1:hover{
+.btn1:hover {
     background-color: aqua;
 }
 .active {
@@ -160,27 +158,28 @@ table {
 }
 .ExporPdf {
     border: 2px solid rgb(1, 102, 1);
-    
+
     border-radius: 4px;
     height: 30px;
     width: 120px;
     margin: 10px 0px 5px 770px;
-    
+
     position: fixed;
     top: 0;
     z-index: 100;
     background-color: rgb(167, 233, 191);
-    
 }
 
-.Rupture , .Plusvendu , .recette {
-   border: 2px solid rgb(125, 83, 0);
-   background-color: rgb(255, 240, 215);
-   color: black;
-   width: 250px;
-   height: 70px;
-   border-radius: 4px;
-   margin: 2px 20px;
+.Rupture,
+.Plusvendu,
+.recette {
+    border: 2px solid rgb(125, 83, 0);
+    background-color: rgb(255, 240, 215);
+    color: black;
+    width: 250px;
+    height: 70px;
+    border-radius: 4px;
+    margin: 2px 20px;
 }
 .tblRupture {
     border-collapse: collapse;
@@ -193,7 +192,7 @@ table {
     height: 40px;
     background-color: white;
 }
-.tblRupture tr{
+.tblRupture tr {
     height: 40px;
 }
 .navbarAll {
@@ -202,33 +201,29 @@ table {
     width: 100%;
     align-items: center;
     margin-top: -55px;
-  
 }
 
 .logo {
     margin-left: 40px;
     color: darkblue;
     font-size: 25px;
-
 }
 .navbarAll div {
     display: flex;
-    /* background-color: rgb(241, 241, 241); */background-color: #28a745;
+    /* background-color: rgb(241, 241, 241); */
+    background-color: #28a745;
     height: 50px;
     align-items: center;
     text-align: center;
-
 }
 #mynavbar ul {
     display: flex;
     margin-left: 20px;
-
 }
-#mynavbar li{
+#mynavbar li {
     list-style: none;
     margin-left: 20px;
     background-color: #28a745;
-   
 }
 .nav-link {
     color: whitesmoke;
@@ -253,7 +248,7 @@ table {
 }
 
 .modal-content1 {
-    background-color: white; 
+    background-color: white;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
@@ -348,8 +343,6 @@ label {
     background-color: #218838;
 }
 
-
-
 .filters {
     display: flex;
     gap: 25px;
@@ -362,7 +355,7 @@ label {
     display: flex;
     align-items: center;
     cursor: pointer;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
 .switch input {
@@ -416,4 +409,23 @@ label {
 .text {
     font-size: 15px;
     font-weight: 500;
+}
+
+/* Badges statut commande */
+.badge-statut {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.badge-attente {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffc107;
+}
+.badge-regle {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #28a745;
 }

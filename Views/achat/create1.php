@@ -7,45 +7,25 @@
     <link rel="stylesheet" href="/lib/sweetalert2/sweetalert2.min.css">
     <link rel="stylesheet" href="/Views/acceuil/cssAcceuil1.css">
       <script src="/lib/sweetalert2/sweetalert2.all.min.js"></script>
-   
 
-    
+
+
 </head>
 
 
 <body>
     <header class="navbarAll">
     <div>
-          <a class="logo">VENTE</a>
-          
+          <a class="logo">🍷 VENTE</a>
+
           <div class="" id="mynavbar">
-            <ul>
-            <li class="nav-item">
-                  <a href="index.php?entity=acceuil&action=read"><button class="nav-link" style="width:100px">Tableau de bord</button></a>
-                </li>
-                <li class="nav-item">
-                  <a href="index.php?entity=produit&action=read"><button class="nav-link" >Produits</button></a>
-                </li>
-                <li class="nav-item">
-                  <a href="index.php?entity=client&action=read"><button class="nav-link">Clients</button></a>
-                </li>  
-                <li class="nav-item">
-                   <a href="index.php?entity=command&action=read"><button class="nav-link">Commandes</button></a>
-                </li> 
-                <li class="nav-item">
-                  <a href="index.php?entity=achat&action=read"><button class="nav-link">Achats</button></a>
-                </li>
-                <li class="nav-item">
-                  <a href="index.php?entity=reglement&action=read"><button class="nav-link">Règlements</button></a>
-                </li>  
-              
-            </ul>
+            <?php require_once __DIR__ . "/../shared/navbar.php"; ?>
             <!-- <form class="d-flex" action="">
               <input id="inputRecherche" type="text" placeholder="Taper ici pour rechercher">
               <button class="btnRecherche">Rechercher</button>
             </form>
           <a href=""><button class="notif">N</button></a> -->
-            
+
           </div>
         </div>
     </header>
@@ -56,7 +36,9 @@
             <form id="formAchat" method="post" action="index.php?entity=achat&action=create">
 
                 <label for="dateAchat">Date d'Achat:</label>
-                <input type="date" id="dateAchat" name="dateAchat" value="<?= date('Y-m-d') ?>">
+                <input type="date" id="dateAchat" name="dateAchat" value="<?= date(
+                    "Y-m-d",
+                ) ?>">
 
                 <label for="nomClient">Nom du Client:</label>
                 <input type="text" id="nomClient" name="nomClient" >
@@ -100,20 +82,18 @@
                 <button type="submit" name="genererPdf">Generer le pdf</button>
 
             </form>
-            <?php if (!empty($message)) : ?>
+            <?php if (!empty($message)): ?>
                 <p><?php echo $message; ?></p>
             <?php endif; ?>
         </section>
 
         <!-- Affichage des achats à droite -->
         <section id="affichage-achats">
-         
-        <?php
-            if (isset($_SESSION['numAchat'])) {
-                $resultat = $this->model->afficherFacture($_SESSION['numAchat']);
-                echo $resultat;
-            }
-        ?>
+
+        <?php if (isset($_SESSION["numAchat"])) {
+            $resultat = $this->model->afficherFacture($_SESSION["numAchat"]);
+            echo $resultat;
+        } ?>
         </section>
     </div>
     <!-- <footer>
@@ -150,41 +130,15 @@
   });
 </script>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("formAchat");
 
-    // Restaurer les valeurs si elles existent
-    const nomClientSaved = sessionStorage.getItem("nomClient");
-    const dateAchatSaved = sessionStorage.getItem("dateAchat");
-    if (nomClientSaved) document.getElementById("nomClient").value = nomClientSaved;
-    if (dateAchatSaved) document.getElementById("dateAchat").value = dateAchatSaved;
-
-    form.addEventListener("submit", function (event) {
-      const boutonClique = event.submitter?.name;
-
-      if (boutonClique === "valider") {
-        // Sauvegarder nom et date
-        const nomClient = document.getElementById("nomClient").value;
-        const dateAchat = document.getElementById("dateAchat").value;
-        sessionStorage.setItem("nomClient", nomClient);
-        sessionStorage.setItem("dateAchat", dateAchat);
-      } else if (["annuler", "nouvelleFacture"].includes(boutonClique)) {
-        // Si on annule ou commence une nouvelle facture, on vide la mémoire
-        sessionStorage.removeItem("nomClient");
-        sessionStorage.removeItem("dateAchat");
-      }
-    });
-  });
-</script>
-
-
-<?php if (isset($_SESSION['error_message'])): ?>
+<?php if (isset($_SESSION["error_message"])): ?>
 <script>
     Swal.fire({
         icon: 'error',
         title: 'Erreur de stock',
-        text: '<?= $_SESSION['error_message'] ?> (Stock initial : <?= $_SESSION['stock_initial'] ?>)',
+        text: '<?= $_SESSION["error_message"] ?> (Stock initial : <?= $_SESSION[
+     "stock_initial"
+ ] ?>)',
         confirmButtonText: 'OK',
         confirmButtonColor: '#d33',
         allowOutsideClick: false,
@@ -192,12 +146,11 @@
     });
 </script>
 <?php
-    unset($_SESSION['error_message']);
-    unset($_SESSION['stock_initial']);
-endif;
-?>
+unset($_SESSION["error_message"]);
+unset($_SESSION["stock_initial"]);
+endif; ?>
 
-<?php if (isset($_GET['clientExist']) && $_GET['clientExist'] == 0): ?>
+<?php if (isset($_GET["clientExist"]) && $_GET["clientExist"] == 0): ?>
 <script>
 Swal.fire({
     icon: 'error',
@@ -208,7 +161,7 @@ Swal.fire({
 </script>
 <?php endif; ?>
 
-<?php if (isset($_GET['produitExist']) && $_GET['produitExist'] == 0): ?>
+<?php if (isset($_GET["produitExist"]) && $_GET["produitExist"] == 0): ?>
 <script>
 Swal.fire({
     icon: 'error',
@@ -218,5 +171,3 @@ Swal.fire({
 });
 </script>
 <?php endif; ?>
-
-
