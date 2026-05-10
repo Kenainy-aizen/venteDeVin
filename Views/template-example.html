@@ -1,0 +1,83 @@
+<!-- Template HTML Base pour les Vues -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= APP_NAME ?> – Section</title>
+
+    <!-- CSS Globale -->
+    <link rel="stylesheet" href="<?= BASE_URL ?>/Views/shared/style.css">
+    <!-- CSS Composants -->
+    <link rel="stylesheet" href="<?= BASE_URL ?>/Views/shared/components.css">
+    <!-- CSS Personnalisé (optionnel) -->
+    <!-- <link rel="stylesheet" href="<?= BASE_URL ?>/Views/section/style.css"> -->
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbarAll">
+    <div>
+        <a class="logo">🍷 <?= APP_NAME ?></a>
+        <div id="mynavbar">
+            <?php require_once __DIR__ . "/../shared/navbar.php"; ?>
+        </div>
+    </div>
+</nav>
+
+<!-- ===== CONTENU PRINCIPAL ===== -->
+<main class="container">
+    <div style="padding: 2rem 0;">
+
+        <!-- Titre de la section -->
+        <h1 style="color: var(--primary-color); margin-bottom: 2rem;">
+            📋 Titre de la Section
+        </h1>
+
+        <!-- Messages d'alerte (optionnel) -->
+        <?php if (isset($success_message)): ?>
+        <div class="alert alert-success">
+            ✅ <?= htmlspecialchars($success_message) ?>
+        </div>
+        <?php endif; ?>
+
+        <?php if (isset($error_message)): ?>
+        <div class="alert alert-danger">
+            ❌ <?= htmlspecialchars($error_message) ?>
+        </div>
+        <?php endif; ?>
+
+        <!-- Grille de contenu -->
+        <div class="row">
+            <!-- Colonne principale -->
+            <div class="col-8">
+                <!-- Votre contenu ici -->
+            </div>
+
+            <!-- Colonne latérale -->
+            <div class="col-4">
+                <!-- Widget latéral -->
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<!-- ===== FOOTER (optionnel) ===== -->
+<footer style="
+    background: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    margin-top: 3rem;
+">
+    <p>&copy; 2024 <?= APP_NAME ?>. Tous droits réservés.</p>
+</footer>
+
+<!-- Scripts -->
+<script>
+    // Votre code JavaScript ici
+</script>
+
+</body>
+</html>

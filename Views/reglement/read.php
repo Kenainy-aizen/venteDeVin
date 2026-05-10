@@ -10,8 +10,8 @@ foreach ($reglement as $rows) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Règlements – Vente de Vin</title>
-    <link rel="stylesheet" href="/lib/sweetalert2/sweetalert2.min.css">
-    <link rel="stylesheet" href="/Views/reglement/read.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/lib/sweetalert2/sweetalert2.min.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/Views/reglement/read.css">
 </head>
 <body>
 
@@ -264,9 +264,9 @@ foreach ($reglement as $rows) {
     });
 </script>
 
-<script src="/lib/sweetalert2/sweetalert2.all.min.js"></script>
-<script src="/Views/reglement/script.js"></script>
-<script src="/Views/reglement/test1.js"></script>
+<script src="<?= BASE_URL ?>/lib/sweetalert2/sweetalert2.all.min.js"></script>
+<script src="<?= BASE_URL ?>/Views/reglement/script.js"></script>
+<script src="<?= BASE_URL ?>/Views/reglement/test1.js"></script>
 
 <?php if (isset($_GET["success"]) && $_GET["success"] == 1): ?>
 <script>Swal.fire({ icon:'success', title:'Succès', text:'Règlement modifié avec succès.', confirmButtonText:'OK' });</script>

@@ -5,6 +5,13 @@ ini_set("display_errors", 1);
 ini_set("display_startup_errors", 1);
 
 session_start();
+
+// Calcule automatiquement le chemin de base du projet (ex: '/ProjetVenteVin' ou '')
+define(
+    "BASE_URL",
+    rtrim(str_replace("\\", "/", dirname($_SERVER["SCRIPT_NAME"])), "/"),
+);
+
 require_once "Controllers/AccueilController.php";
 require_once "Controllers/ProduitController.php";
 require_once "Controllers/ClientController.php";

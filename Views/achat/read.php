@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ventes – Vente de Vin</title>
-    <link rel="stylesheet" href="/lib/sweetalert2/sweetalert2.min.css">
-    <link rel="stylesheet" href="/Views/achat/read.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/lib/sweetalert2/sweetalert2.min.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/Views/achat/read.css">
 </head>
 <body>
 
@@ -89,8 +89,8 @@
     <div><a href="index.php?entity=achat&action=create"><button class="btn1">+ Nouvelle vente</button></a></div>
 </div>
 
-<script src="/lib/sweetalert2/sweetalert2.all.min.js"></script>
-<script src="/Views/achat/script.js"></script>
+<script src="<?= BASE_URL ?>/lib/sweetalert2/sweetalert2.all.min.js"></script>
+<script src="<?= BASE_URL ?>/Views/achat/script.js"></script>
 
 </body>
 </html>

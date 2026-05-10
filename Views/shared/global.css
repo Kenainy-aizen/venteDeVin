@@ -1,0 +1,657 @@
+/* ═══════════════════════════════════════════════════════════
+   GLOBAL STYLESHEET – Gestion Vente de Vin
+   ═══════════════════════════════════════════════════════════ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ── Variables ──────────────────────────────────────────── */
+:root {
+  --wine:        #6b2737;
+  --wine-dark:   #4a1525;
+  --wine-hover:  #7e3044;
+  --gold:        #c9a84c;
+  --gold-light:  #f0d98a;
+  --bg-page:     #f4f1ed;
+  --bg-card:     #ffffff;
+  --bg-alt:      #faf7f4;
+  --border:      #e0d4c8;
+  --text-main:   #2c1a1a;
+  --text-mid:    #6b5555;
+  --text-light:  #a08888;
+  --success:     #1a7a45;
+  --success-bg:  #e8f8ef;
+  --danger:      #c0392b;
+  --danger-bg:   #fdecea;
+  --warning:     #c07c0a;
+  --warning-bg:  #fef5e4;
+  --info:        #1565c0;
+  --info-bg:     #e8f0fe;
+  --navbar-h:    60px;
+  --radius:      8px;
+  --radius-sm:   5px;
+  --shadow:      0 2px 8px rgba(0,0,0,0.08);
+  --shadow-md:   0 4px 16px rgba(0,0,0,0.12);
+  --shadow-lg:   0 8px 32px rgba(0,0,0,0.18);
+  --transition:  0.2s ease;
+}
+
+/* ── Reset ──────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+/* ── Base ───────────────────────────────────────────────── */
+html { font-size: 14px; scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', 'Trebuchet MS', Arial, sans-serif;
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ══════════════════════════════════════════════════════════
+   NAVBAR
+══════════════════════════════════════════════════════════ */
+.navbarAll {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: var(--navbar-h);
+  z-index: 1000;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+}
+
+.navbarAll > div {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  background: linear-gradient(135deg, var(--wine-dark) 0%, var(--wine) 55%, #903050 100%);
+  padding: 0 16px;
+  gap: 0;
+}
+
+.logo {
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 1.5px;
+  white-space: nowrap;
+  padding: 0 16px 0 4px;
+  margin-right: 8px;
+  border-right: 1px solid rgba(255,255,255,0.2);
+}
+
+#mynavbar {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  overflow: hidden;
+}
+
+#mynavbar ul {
+  display: flex;
+  list-style: none;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+#mynavbar li { list-style: none; }
+
+.nav-link {
+  display: inline-block;
+  color: rgba(255,255,255,0.82);
+  background: transparent;
+  border: none;
+  padding: 7px 13px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.nav-link:hover {
+  background: rgba(255,255,255,0.14);
+  color: white;
+}
+
+.nav-active {
+  background: rgba(255,255,255,0.18) !important;
+  color: var(--gold-light) !important;
+  font-weight: 600;
+}
+
+/* Search form inside navbar */
+.d-flex {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  flex-shrink: 0;
+  padding-left: 12px;
+}
+
+#inputRecherche {
+  height: 32px;
+  width: 200px;
+  padding: 0 14px;
+  border: 1.5px solid rgba(255,255,255,0.3);
+  border-radius: 16px;
+  background: rgba(255,255,255,0.12);
+  color: white;
+  font-size: 13px;
+  font-family: inherit;
+  outline: none;
+  transition: width var(--transition), background var(--transition), border-color var(--transition);
+}
+
+#inputRecherche::placeholder { color: rgba(255,255,255,0.5); }
+
+#inputRecherche:focus {
+  width: 240px;
+  background: rgba(255,255,255,0.2);
+  border-color: rgba(255,255,255,0.6);
+}
+
+.btnRecherche {
+  height: 32px;
+  padding: 0 16px;
+  background: var(--gold);
+  color: var(--wine-dark);
+  border: none;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background var(--transition);
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.btnRecherche:hover { background: var(--gold-light); }
+
+/* ══════════════════════════════════════════════════════════
+   PAGE LAYOUT
+══════════════════════════════════════════════════════════ */
+.page-content {
+  margin-top: var(--navbar-h);
+  padding: 28px 24px 40px;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.page-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--wine-dark);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.page-title::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 22px;
+  background: linear-gradient(to bottom, var(--wine), var(--gold));
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* ══════════════════════════════════════════════════════════
+   TABLE CARD
+══════════════════════════════════════════════════════════ */
+.table-card {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.table-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(to right, var(--bg-alt), #fff);
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.table-scroll { overflow-x: auto; }
+
+/* ══════════════════════════════════════════════════════════
+   DATA TABLE
+══════════════════════════════════════════════════════════ */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+
+.data-table thead tr {
+  background: linear-gradient(135deg, var(--wine-dark) 0%, var(--wine) 100%);
+  color: white;
+}
+
+.data-table thead th {
+  padding: 13px 16px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  white-space: nowrap;
+  border: none;
+}
+
+.data-table thead th:last-child { text-align: center; }
+
+.data-table tbody tr {
+  border-bottom: 1px solid var(--border);
+  transition: background var(--transition);
+}
+
+.data-table tbody tr:last-child { border-bottom: none; }
+
+.data-table tbody tr:nth-child(even) { background-color: var(--bg-alt); }
+
+.data-table tbody tr:hover { background-color: #fdf0f4 !important; }
+
+.data-table tbody td {
+  padding: 11px 16px;
+  color: var(--text-main);
+  vertical-align: middle;
+}
+
+.data-table tbody td:last-child { text-align: center; }
+
+.actions-cell {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+/* ══════════════════════════════════════════════════════════
+   BUTTONS – action buttons (inside table rows)
+══════════════════════════════════════════════════════════ */
+.btn-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 11px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition);
+  white-space: nowrap;
+  font-family: inherit;
+  line-height: 1.4;
+}
+
+/* Edit – blue */
+.btn-edit {
+  background: var(--info-bg);
+  color: var(--info);
+  border-color: #b3cef6;
+}
+.btn-edit:hover { background: var(--info); color: white; border-color: var(--info); }
+
+/* Delete – red */
+.btn-delete {
+  background: var(--danger-bg);
+  color: var(--danger);
+  border-color: #f1aaa4;
+}
+.btn-delete:hover { background: var(--danger); color: white; border-color: var(--danger); }
+
+/* PDF – purple */
+.btn-pdf {
+  background: #f3e8ff;
+  color: #6b21a8;
+  border-color: #d8b4fe;
+}
+.btn-pdf:hover { background: #6b21a8; color: white; border-color: #6b21a8; }
+
+/* Modify – amber */
+.btn-modify {
+  background: var(--warning-bg);
+  color: var(--warning);
+  border-color: #f9c74f;
+}
+.btn-modify:hover { background: var(--warning); color: white; border-color: var(--warning); }
+
+/* ── Add button (toolbar / header) ─────────────────────── */
+.btn-add {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 22px;
+  background: linear-gradient(135deg, #1a7a45, #27ae60);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+  box-shadow: 0 2px 10px rgba(26,122,69,0.3);
+  font-family: inherit;
+  white-space: nowrap;
+}
+.btn-add:hover {
+  background: linear-gradient(135deg, #27ae60, #1a7a45);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(26,122,69,0.4);
+}
+
+/* ── PDF bulk button ────────────────────────────────────── */
+.btn-pdf-bulk {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 20px;
+  background: linear-gradient(135deg, #5b21b6, #7c3aed);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+  font-family: inherit;
+}
+.btn-pdf-bulk:hover { opacity: 0.88; transform: translateY(-1px); }
+
+/* ── Form submit button ─────────────────────────────────── */
+.btn, .btn2 {
+  margin-top: 20px;
+  padding: 11px 16px;
+  background: linear-gradient(135deg, var(--wine), var(--wine-hover));
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  transition: all var(--transition);
+  font-family: inherit;
+  letter-spacing: 0.3px;
+}
+.btn:hover, .btn2:hover {
+  background: linear-gradient(135deg, var(--wine-hover), var(--wine));
+  box-shadow: 0 4px 14px rgba(107,39,55,0.35);
+  transform: translateY(-1px);
+}
+
+/* ══════════════════════════════════════════════════════════
+   MODALS
+══════════════════════════════════════════════════════════ */
+.modal, .modal1 {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  inset: 0;
+  background: rgba(44, 26, 26, 0.6);
+  backdrop-filter: blur(4px);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content, .modal-content1 {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  width: 480px;
+  max-width: 96vw;
+  max-height: 92vh;
+  overflow-y: auto;
+  animation: modal-in 0.22s cubic-bezier(0.34,1.56,0.64,1);
+  border-top: 4px solid var(--wine);
+}
+
+@keyframes modal-in {
+  from { transform: scale(0.88) translateY(-18px); opacity: 0; }
+  to   { transform: scale(1)    translateY(0);     opacity: 1; }
+}
+
+.modal-content h2, .modal-content1 h2 {
+  font-size: 15px;
+  font-weight: 700;
+  padding: 20px 22px 16px;
+  color: var(--wine-dark);
+  border-bottom: 1px solid var(--border);
+  margin: 0;
+  letter-spacing: 0.2px;
+}
+
+.close {
+  float: right;
+  font-size: 20px;
+  color: var(--text-light);
+  cursor: pointer;
+  line-height: 1;
+  margin: -2px -2px 0 8px;
+  padding: 3px 7px;
+  border-radius: 50%;
+  transition: all var(--transition);
+}
+.close:hover { color: var(--danger); background: var(--danger-bg); }
+
+/* ── Form inside modal ──────────────────────────────────── */
+.modal-content form,
+.modal-content1 form {
+  padding: 6px 22px 22px;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-content label,
+.modal-content1 label {
+  display: block;
+  font-size: 11.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-mid);
+  margin-top: 16px;
+  margin-bottom: 5px;
+}
+
+.modal-content input,
+.modal-content select,
+.modal-content1 input,
+.modal-content1 select {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-family: inherit;
+  color: var(--text-main);
+  background: var(--bg-card);
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  margin: 0;
+}
+
+.modal-content input:focus,
+.modal-content select:focus,
+.modal-content1 input:focus,
+.modal-content1 select:focus {
+  border-color: var(--wine);
+  box-shadow: 0 0 0 3px rgba(107,39,55,0.1);
+}
+
+/* ══════════════════════════════════════════════════════════
+   BADGES
+══════════════════════════════════════════════════════════ */
+.badge-statut {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+.badge-attente { background: var(--warning-bg); color: var(--warning); border: 1px solid #f9c74f; }
+.badge-regle   { background: var(--success-bg); color: var(--success); border: 1px solid #a9dfbf; }
+
+/* Low stock */
+.stock-low td { background-color: #fff8e1 !important; }
+.stock-low:hover td { background-color: #fff0cc !important; }
+
+.badge-warning {
+  display: inline-block;
+  background: var(--danger-bg);
+  color: var(--danger);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 10px;
+  margin-left: 4px;
+  vertical-align: middle;
+  border: 1px solid #f1aaa4;
+}
+
+/* ══════════════════════════════════════════════════════════
+   FILTER TOGGLES (commandes page)
+══════════════════════════════════════════════════════════ */
+.filters {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.switch {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 8px;
+}
+.switch input { display: none; }
+
+.slider {
+  position: relative;
+  width: 42px;
+  height: 22px;
+  background: #ccc;
+  border-radius: 11px;
+  transition: background 0.3s;
+  flex-shrink: 0;
+}
+.slider::before {
+  content: '';
+  position: absolute;
+  width: 18px; height: 18px;
+  left: 2px; top: 2px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.3s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+.slider.attente { background: var(--warning); }
+.switch input:checked + .slider { background: var(--success); }
+.switch input:checked + .slider.attente { background: var(--warning); }
+.switch input:checked + .slider.regle  { background: var(--success); }
+.switch input:checked + .slider::before { transform: translateX(20px); }
+
+.text {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+/* ══════════════════════════════════════════════════════════
+   DATE FILTER BOX (achats page)
+══════════════════════════════════════════════════════════ */
+#requete {
+  display: inline-block;
+  background: white;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--wine);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  margin-bottom: 18px;
+  box-shadow: var(--shadow);
+}
+
+#requete h3 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--wine-dark);
+  margin-bottom: 10px;
+}
+
+#requete input[type="date"] {
+  padding: 6px 10px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--text-main);
+  width: auto;
+  background: var(--bg-alt);
+}
+
+#requete input[type="date"]:focus {
+  border-color: var(--wine);
+  outline: none;
+}
+
+#requete button {
+  padding: 6px 16px;
+  background: var(--wine);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background var(--transition);
+  margin-left: 4px;
+}
+#requete button:hover { background: var(--wine-dark); }
+
+/* ══════════════════════════════════════════════════════════
+   CHECKBOX in reglement table
+══════════════════════════════════════════════════════════ */
+.data-table input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  margin-right: 6px;
+  cursor: pointer;
+  accent-color: var(--wine);
+  vertical-align: middle;
+}
+
+/* ══════════════════════════════════════════════════════════
+   SCROLLBAR
+══════════════════════════════════════════════════════════ */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-alt); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-light); }

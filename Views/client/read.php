@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clients – Vente de Vin</title>
-    <link rel="stylesheet" href="/lib/sweetalert2/sweetalert2.min.css">
-    <link rel="stylesheet" href="/Views/client/read.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/lib/sweetalert2/sweetalert2.min.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/Views/client/read.css">
 </head>
 <body>
 
@@ -171,8 +171,8 @@
     };
 </script>
 
-<script src="/lib/sweetalert2/sweetalert2.all.min.js"></script>
-<script src="/Views/client/script.js"></script>
+<script src="<?= BASE_URL ?>/lib/sweetalert2/sweetalert2.all.min.js"></script>
+<script src="<?= BASE_URL ?>/Views/client/script.js"></script>
 
 <?php if (isset($_GET["success"]) && $_GET["success"] == 1): ?>
 <script>

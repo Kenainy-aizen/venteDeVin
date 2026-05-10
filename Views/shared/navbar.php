@@ -1,39 +1,29 @@
+<!-- Barre de navigation partagée -->
+<!-- Utilisation: <?php require_once __DIR__ . "/../shared/navbar.php"; ?> -->
+
 <?php
-/**
- * Barre de navigation partagée
- * Usage: <?php require_once __DIR__ . '/../shared/navbar.php'; ?>
- */
-$currentEntity = $_GET['entity'] ?? 'acceuil';
+$currentEntity = $_GET["entity"] ?? "acceuil";
+$navItems = [
+    "acceuil" => ["label" => "📊 Tableau de bord", "width" => "width:150px"],
+    "produit" => ["label" => "🍾 Produits", "width" => ""],
+    "client" => ["label" => "👥 Clients", "width" => ""],
+    "command" => ["label" => "📋 Commandes", "width" => ""],
+    "achat" => ["label" => "💳 Ventes", "width" => ""],
+    "reglement" => ["label" => "💰 Règlements", "width" => ""],
+];
 ?>
+
 <ul>
+    <?php foreach ($navItems as $entity => $item): ?>
     <li class="nav-item">
-        <a href="index.php?entity=acceuil&action=read">
-            <button class="nav-link <?= $currentEntity === 'acceuil' ? 'nav-active' : '' ?>" style="width:120px">Tableau de bord</button>
+        <a href="<?= BASE_URL ?>/index.php?entity=<?= $entity ?>&action=index">
+            <button class="nav-link <?= $currentEntity === $entity
+                ? "nav-active"
+                : "" ?>"
+                    <?= $item["width"] ?? "" ?>>
+                <?= $item["label"] ?>
+            </button>
         </a>
     </li>
-    <li class="nav-item">
-        <a href="index.php?entity=produit&action=read">
-            <button class="nav-link <?= $currentEntity === 'produit' ? 'nav-active' : '' ?>">Produits</button>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a href="index.php?entity=client&action=read">
-            <button class="nav-link <?= $currentEntity === 'client' ? 'nav-active' : '' ?>">Clients</button>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a href="index.php?entity=command&action=read">
-            <button class="nav-link <?= $currentEntity === 'command' ? 'nav-active' : '' ?>">Commandes</button>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a href="index.php?entity=achat&action=read">
-            <button class="nav-link <?= $currentEntity === 'achat' ? 'nav-active' : '' ?>">Ventes</button>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a href="index.php?entity=reglement&action=read">
-            <button class="nav-link <?= $currentEntity === 'reglement' ? 'nav-active' : '' ?>">Règlements</button>
-        </a>
-    </li>
+    <?php endforeach; ?>
 </ul>

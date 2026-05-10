@@ -351,7 +351,7 @@ Les documents générés incluent :
 |---|---|---|
 | Requêtes SQL | ✅ Sécurisées | PDO Prepared Statements sur toutes les requêtes |
 | Protection XSS | ✅ Activée | `htmlspecialchars()` sur tous les affichages |
-| Credentials DB | ✅ Externalisés | Fichier `config/config.php` séparé |
+| Credentials DB | ✅ Externalisés | Variables d'environnement dans `.env` (v2.0) |
 | Erreurs DB | ✅ Masquées | `error_log()` côté serveur, message générique côté client |
 | Authentification | ⚠️ Absente | Pas de système de login — à ajouter en production |
 | HTTPS | ⚠️ Non configuré | À activer via le serveur web en production |
@@ -360,8 +360,93 @@ Les documents générés incluent :
 
 ---
 
+## 🎨 Version 2.0 — Améliorations (2024)
+
+### ✨ Nouvelles Fonctionnalités
+
+#### 🔐 Sécurité Renforcée
+- **Variables d'environnement** : Les credentials BD sont maintenant dans un fichier `.env` (non commité)
+- **Classe `EnvLoader`** : Charge les variables d'environnement facilement
+- **`.gitignore`** : Protège les fichiers sensibles contre les fuites
+- **Gestion d'environnement** : Dev vs Production avec `APP_ENV` et `APP_DEBUG`
+
+#### 🎨 Frontend Professionnel
+- **Design moderne** : Thème viticole (bordeaux/or) cohérent
+- **Responsive complet** : Mobile-first, fonctionnel sur tous les écrans
+- **Composants CSS réutilisables** :
+  - 6 variantes de boutons (primary, success, danger, warning, info, outline)
+  - Formulaires stylisés avec validation visuelle
+  - Alertes colorées (success, danger, warning, info)
+  - Badges et badges
+  - Cartes d'action avec layout flexible
+  - Pagination élégante
+- **Animations fluides** : Transitions CSS professionnelles
+- **Variables CSS** : Personnalisables facilement via `:root`
+
+#### 📚 Documentation Complète
+- **`SETUP_GUIDE.md`** : Installation et configuration
+- **`DEVELOPERS_GUIDE.md`** : Guide complet pour les développeurs
+- **`CHANGELOG.md`** : Résumé des changements
+- **`FILES_SUMMARY.md`** : Récapitulatif des fichiers créés/modifiés
+
+### 📝 Fichiers Ajoutés/Modifiés
+
+**Fichiers créés :**
+```
+config/EnvLoader.php               # Classe de gestion des .env
+.env                               # Variables d'environnement (GIT IGNORED)
+.env.example                       # Template pour les développeurs
+.gitignore                         # Prévient les fuites de secrets
+Views/shared/style.css             # CSS globale professionnelle (371 lignes)
+Views/shared/components.css        # Composants réutilisables (437 lignes)
+Views/template-example.html        # Boilerplate HTML pour nouvelles vues
+SETUP_GUIDE.md                     # Documentation installation
+DEVELOPERS_GUIDE.md               # Guide développeurs
+CHANGELOG.md                       # Résumé des changements v1→v2
+FILES_SUMMARY.md                   # Récapitulatif fichiers
+```
+
+**Fichiers modifiés :**
+```
+config/config.php                  # Chargement via EnvLoader
+Views/shared/navbar.php            # Navigation avec icônes/emojis
+Views/acceuil/read.php             # Référence new CSS, meilleure structure
+```
+
+### 🚀 Quick Start v2.0
+
+1. **Copier les nouveaux fichiers** (créés et modifiés ci-dessus)
+2. **Créer `.env` à partir de `.env.example`** :
+   ```bash
+   cp .env.example .env
+   ```
+3. **Éditer `.env`** avec vos paramètres BD
+4. **Le reste fonctionne comme avant !** L'app charge automatiquement `.env`
+
+### 📊 Comparaison Avant/Après
+
+| Aspect | Avant | Après |
+|--------|-------|-------|
+| **Sécurité** | Credentials en texte clair | Variables d'environnement ✅ |
+| **Frontend** | Basique | Professionnel & Responsive ✅ |
+| **Composants CSS** | Ad-hoc | Librairie complète ✅ |
+| **Documentation** | Mineure | Complète ✅ |
+| **Déploiement** | Risqué | Sécurisé ✅ |
+
+### 📖 Documentation Disponible
+
+Pour plus de détails, consultez :
+- **Installation/Déploiement** → `SETUP_GUIDE.md`
+- **Développement** → `DEVELOPERS_GUIDE.md`
+- **Changements effectués** → `CHANGELOG.md`
+- **Fichiers modifiés** → `FILES_SUMMARY.md`
+
+---
+
 ## 👨‍💻 Auteur
 
 Projet réalisé dans le cadre d'un cours de développement web (L2 Informatique).
 
 **Entreprise cible** : *Lazan'i Betsileo* — Fianarantsoa, Madagascar
+
+**Version actuelle** : 2.0 (avec sécurité renforcée et frontend professionnel)

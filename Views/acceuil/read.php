@@ -3,80 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tableau de bord – Vente de Vin</title>
-    <link rel="stylesheet" href="/Views/acceuil/cssAcceuil.css">
+    <title><?= APP_NAME ?> – Tableau de bord</title>
+    <link rel="stylesheet" href="<?= BASE_URL ?>/Views/shared/style.css">
     <script src="https://www.gstatic.com/charts/loader.js"></script>
     <script>
         window.chartData = {
-          data1: {
-            cols: [
-              { label: "Mois", type: "string" },
-              { label: "Recette par mois", type: "number" }
-            ],
-            rows: [
-              <?php foreach ($result as $row): ?>
-                { c: [{ v: "<?= htmlspecialchars(
-                    $row["mois_fr"],
-                ) ?>" }, { v: <?= (float) $row["recette_totale"] ?> }] },
-              <?php endforeach; ?>
-            ]
-          },
-          data2: {
-            cols: [
-              { label: "Produit", type: "string" },
-              { label: "Nombre", type: "number" }
-            ],
-            rows: [
-              <?php foreach ($result1 as $row1): ?>
-                { c: [{ v: "<?= addslashes(
-                    htmlspecialchars($row1["design"]),
-                ) ?>" }, { v: <?= (float) $row1["total_achete"] ?> }] },
-              <?php endforeach; ?>
-            ]
-          },
-          data3: {
-            cols: [
-              { label: "Mode paiement", type: "string" },
-              { label: "Total payé", type: "number" }
-            ],
-            rows: [
-              <?php foreach ($type as $row): ?>
-                { c: [{ v: "<?= addslashes(
-                    htmlspecialchars($row["mode_paiement"]),
-                ) ?>" }, { v: <?= (float) $row["total_paye"] ?> }] },
-              <?php endforeach; ?>
-            ]
-          },
-          data4: {
-            cols: [
-              { label: "Type client", type: "string" },
-              { label: "Total recette", type: "number" }
-            ],
-            rows: [
-              <?php foreach ($repartition as $row): ?>
-                { c: [{ v: "<?= addslashes(
-                    htmlspecialchars($row["type_client"]),
-                ) ?>" }, { v: <?= (float) $row["total_recette"] ?> }] },
-              <?php endforeach; ?>
-            ]
-          }
+            data1: {
+                cols: [
+                    { label: "Mois", type: "string" },
+                    { label: "Recette par mois", type: "number" }
+                ],
+                rows: [
+                    <?php foreach ($result as $row): ?>
+                    { c: [{ v: "<?= htmlspecialchars(
+                        $row["mois_fr"],
+                    ) ?>" }, { v: <?= (float) $row["recette_totale"] ?> }] },
+                    <?php endforeach; ?>
+                ]
+            },
+            data2: {
+                cols: [
+                    { label: "Produit", type: "string" },
+                    { label: "Nombre", type: "number" }
+                ],
+                rows: [
+                    <?php foreach ($result1 as $row1): ?>
+                    { c: [{ v: "<?= addslashes(
+                        htmlspecialchars($row1["design"]),
+                    ) ?>" }, { v: <?= (float) $row1["total_achete"] ?> }] },
+                    <?php endforeach; ?>
+                ]
+            },
+            data3: {
+                cols: [
+                    { label: "Mode paiement", type: "string" },
+                    { label: "Total payé", type: "number" }
+                ],
+                rows: [
+                    <?php foreach ($type as $row): ?>
+                    { c: [{ v: "<?= addslashes(
+                        htmlspecialchars($row["mode_paiement"]),
+                    ) ?>" }, { v: <?= (float) $row["total_paye"] ?> }] },
+                    <?php endforeach; ?>
+                ]
+            },
+            data4: {
+                cols: [
+                    { label: "Type client", type: "string" },
+                    { label: "Total recette", type: "number" }
+                ],
+                rows: [
+                    <?php foreach ($repartition as $row): ?>
+                    { c: [{ v: "<?= addslashes(
+                        htmlspecialchars($row["type_client"]),
+                    ) ?>" }, { v: <?= (float) $row["total_recette"] ?> }] },
+                    <?php endforeach; ?>
+                ]
+            }
         };
     </script>
-    <script src="/Views/acceuil/charts.js"></script>
+    <script src="<?= BASE_URL ?>/Views/acceuil/charts.js"></script>
 </head>
 <body>
 
+<!-- NAVBAR -->
 <nav class="navbarAll">
     <div>
-        <a class="logo">🍷 VENTE</a>
+        <a class="logo">🍷 GESTION VENTE</a>
         <div id="mynavbar">
             <?php require_once __DIR__ . "/../shared/navbar.php"; ?>
         </div>
     </div>
 </nav>
 
+<!-- STATS CARDS -->
 <div class="stats-grid">
-
     <div class="stat-card">
         <div class="stat-icon">🧾</div>
         <div class="stat-label">Factures ce mois</div>
@@ -114,7 +115,7 @@
             ",",
             " ",
         ) ?> Ar</div>
-        <button class="open-modal-btn" onclick="openModal()">Voir les clients</button>
+        <button class="open-modal-btn" onclick="openModal()">Voir détails</button>
     </div>
 
     <div class="stat-card">
@@ -133,21 +134,21 @@
             " ",
         ) ?> btl</div>
     </div>
-
 </div>
 
+<!-- CHARTS SECTION -->
 <div class="charts-wrapper">
-    <div id="myChart2" style="border-radius: 10px;"></div>
-    <div id="myChart3" style="border-radius: 10px;"></div>
-    <div id="myChart4" style="border-radius: 10px;"></div>
-    <div id="myChart1" style="border-radius: 10px;"></div>
+    <div id="myChart2"></div>
+    <div id="myChart3"></div>
+    <div id="myChart4"></div>
+    <div id="myChart1"></div>
 </div>
 
-<!-- Modale clients non réglés -->
+<!-- MODAL: Clients non réglés -->
 <div id="clientModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
-        <h2>Clients n'ayant pas réglé la totalité de leur facture</h2>
+        <h2>Clients n'ayant pas réglé la totalité</h2>
         <table>
             <thead>
                 <tr>
@@ -157,7 +158,7 @@
                     <th>Adresse</th>
                     <th>N° Facture</th>
                     <th>Montant Total</th>
-                    <th>Montant Payé</th>
+                    <th>Payé</th>
                     <th>Restant</th>
                 </tr>
             </thead>
@@ -182,16 +183,18 @@
                             ",",
                             " ",
                         ) ?> Ar</td>
-                        <td style="color:red; font-weight:bold;"><?= number_format(
-                            $row["montant_restant"],
-                            0,
-                            ",",
-                            " ",
-                        ) ?> Ar</td>
+                        <td style="color:#e74c3c; font-weight:bold;">
+                            <?= number_format(
+                                $row["montant_restant"],
+                                0,
+                                ",",
+                                " ",
+                            ) ?> Ar
+                        </td>
                     </tr>
                     <?php endforeach; ?>
                 <?php else: ?>
-                    <tr><td colspan="8" style="text-align:center;">Aucun client en attente de paiement.</td></tr>
+                    <tr><td colspan="8" class="text-center">✅ Aucun client en attente de paiement</td></tr>
                 <?php endif; ?>
             </tbody>
         </table>
@@ -207,7 +210,9 @@
     }
     window.onclick = function(event) {
         const modal = document.getElementById("clientModal");
-        if (event.target === modal) modal.style.display = "none";
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
     };
 </script>
 

@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>COMMANDE</title>
-    <link rel="stylesheet" href="/lib/sweetalert2/sweetalert2.min.css">
-    <link rel="stylesheet" href="/Views/acceuil/cssAcceuil1.css">
-      <script src="/lib/sweetalert2/sweetalert2.all.min.js"></script>
-   
+    <link rel="stylesheet" href="<?= BASE_URL ?>/lib/sweetalert2/sweetalert2.min.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/Views/acceuil/cssAcceuil1.css">
+    <script src="<?= BASE_URL ?>/lib/sweetalert2/sweetalert2.all.min.js"></script>
 
-    
+
+
 </head>
 
 
@@ -17,7 +17,7 @@
     <header class="navbarAll">
     <div>
           <a class="logo">VENTE</a>
-          
+
           <div class="" id="mynavbar">
             <ul>
             <li class="nav-item">
@@ -28,24 +28,24 @@
                 </li>
                 <li class="nav-item">
                   <a href="index.php?entity=client&action=read"><button class="nav-link">Clients</button></a>
-                </li>  
+                </li>
                 <li class="nav-item">
                    <a href="index.php?entity=command&action=read"><button class="nav-link">Commandes</button></a>
-                </li> 
+                </li>
                 <li class="nav-item">
                   <a href="index.php?entity=achat&action=read"><button class="nav-link">Achats</button></a>
                 </li>
                 <li class="nav-item">
                   <a href="index.php?entity=reglement&action=read"><button class="nav-link">Règlements</button></a>
-                </li>  
-              
+                </li>
+
             </ul>
             <!-- <form class="d-flex" action="">
               <input id="inputRecherche" type="text" placeholder="Taper ici pour rechercher">
               <button class="btnRecherche">Rechercher</button>
             </form>
           <a href=""><button class="notif">N</button></a> -->
-            
+
           </div>
         </div>
     </header>
@@ -56,14 +56,16 @@
             <form id="formAchat" method="post" action="index.php?entity=command&action=create">
 
                 <label for="dateAchat">Date de reglement:</label>
-                <input type="date" id="dateAchat" name="date_cmd" value="<?= date('Y-m-d') ?>" required>
+                <input type="date" id="dateAchat" name="date_cmd" value="<?= date(
+                    "Y-m-d",
+                ) ?>" required>
 
                 <label for="nomClient">Nom du Client:</label>
                 <input type="text" id="nomClient" name="nom_client"required>
 
                 <label for="nom_produit">Nom de produit:</label>
                 <input type="text" id="nom_produit" name="design" list="listeProduits" >
-               
+
                   <datalist id="listeProduits"></datalist>
 
                       <script>
@@ -101,20 +103,20 @@
                 <button type="submit" name="genererPdf">Generer le pdf</button>
 
             </form>
-            <?php if (!empty($message)) : ?>
+            <?php if (!empty($message)): ?>
                 <p><?php echo $message; ?></p>
             <?php endif; ?>
         </section>
 
         <!-- Affichage des achats à droite -->
         <section id="affichage-achats">
-         
-        <?php
-            if (isset($_SESSION['num_bon_command'])) {
-                $resultat = $this->model->afficherCommand($_SESSION['num_bon_command']);
-                echo $resultat;
-            }
-        ?>
+
+        <?php if (isset($_SESSION["num_bon_command"])) {
+            $resultat = $this->model->afficherCommand(
+                $_SESSION["num_bon_command"],
+            );
+            echo $resultat;
+        } ?>
         </section>
     </div>
     <!-- <footer>
@@ -179,12 +181,14 @@
   });
 </script>
 
-<?php if (isset($_SESSION['error_message'])): ?>
+<?php if (isset($_SESSION["error_message"])): ?>
 <script>
     Swal.fire({
         icon: 'error',
         title: 'Erreur de stock',
-        text: '<?= $_SESSION['error_message'] ?> (Stock initial : <?= $_SESSION['stock_initial'] ?>)',
+        text: '<?= $_SESSION["error_message"] ?> (Stock initial : <?= $_SESSION[
+     "stock_initial"
+ ] ?>)',
         confirmButtonText: 'OK',
         confirmButtonColor: '#d33',
         allowOutsideClick: false,
@@ -192,12 +196,11 @@
     });
 </script>
 <?php
-    unset($_SESSION['error_message']);
-    unset($_SESSION['stock_initial']);
-endif;
-?>
+unset($_SESSION["error_message"]);
+unset($_SESSION["stock_initial"]);
+endif; ?>
 
-<?php if (isset($_GET['clientExist']) && $_GET['clientExist'] == 0): ?>
+<?php if (isset($_GET["clientExist"]) && $_GET["clientExist"] == 0): ?>
 <script>
 Swal.fire({
     icon: 'error',
@@ -208,7 +211,7 @@ Swal.fire({
 </script>
 <?php endif; ?>
 
-<?php if (isset($_GET['produitExist']) && $_GET['produitExist'] == 0): ?>
+<?php if (isset($_GET["produitExist"]) && $_GET["produitExist"] == 0): ?>
 <script>
 Swal.fire({
     icon: 'error',
@@ -218,5 +221,3 @@ Swal.fire({
 });
 </script>
 <?php endif; ?>
-
-

@@ -1,0 +1,32 @@
+# Environnement
+.env
+.env.local
+.env.*.local
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+.~lock.*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+logs/
+*.log
+
+# Dépendances (si vous utilisez composer)
+vendor/
+composer.lock
+
+# Cache
+cache/
+tmp/
+
+# Build/Distribution
+dist/
+build/
